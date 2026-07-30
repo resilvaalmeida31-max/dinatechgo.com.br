@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dina Tech GO - Sistema</title>
+<style>
+body{font-family:Arial;background:#f1f5f9;margin:0;padding:20px;text-align:center}
+.card{background:white;padding:30px;border-radius:15px;max-width:600px;margin:40px auto;box-shadow:0 5px 20px rgba(0,0,0,0.1)}
+.btn{padding:12px 25px;background:#ef4444;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:bold;margin-top:20px}
+h1{color:#1e40af}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>🎉 Bem-vinda, Dina Tech GO!</h1>
+<p>Você entrou com a senha <b>dina2026</b> com sucesso!</p>
+<p>Seu sistema de login está funcionando.</p>
+<p>Agora pode colocar aqui seu sistema de caixa, produtos, etc.</p>
+<button class="btn" onclick="sair()">SAIR DO SISTEMA</button>
+</div>
+<script>
+// Protege a página
+if(localStorage.getItem('logado')!=='sim'){
+  window.location.href='index.html';
+}
+function sair(){
+  localStorage.removeItem('logado');
+  window.location.href='index.html';
+}
+</script>
+</body>
+</html>
