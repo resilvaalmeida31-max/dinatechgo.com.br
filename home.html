@@ -3,30 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dina Tech GO - Sistema</title>
+<title>Login - Dina Tech GO</title>
 <style>
-body{font-family:Arial;background:#f1f5f9;margin:0;padding:20px;text-align:center}
-.card{background:white;padding:30px;border-radius:15px;max-width:600px;margin:40px auto;box-shadow:0 5px 20px rgba(0,0,0,0.1)}
-.btn{padding:12px 25px;background:#ef4444;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:bold;margin-top:20px}
-h1{color:#1e40af}
+body{margin:0;font-family:Arial;display:flex;align-items:center;justify-content:center;height:100vh;background:#0f172a;color:white}
+.box{background:white;color:#0f172a;padding:40px;border-radius:15px;width:90%;max-width:350px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+input{width:100%;padding:15px;margin:15px 0;border:2px solid #ddd;border-radius:10px;font-size:16px;box-sizing:border-box}
+button{width:100%;padding:15px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer}
+button:hover{background:#1d4ed8}
+#erro{color:red;margin-top:10px;display:none}
 </style>
 </head>
 <body>
-<div class="card">
-<h1>🎉 Bem-vinda, Dina Tech GO!</h1>
-<p>Você entrou com a senha <b>dina2026</b> com sucesso!</p>
-<p>Seu sistema de login está funcionando.</p>
-<p>Agora pode colocar aqui seu sistema de caixa, produtos, etc.</p>
-<button class="btn" onclick="sair()">SAIR DO SISTEMA</button>
+<div class="box">
+<h2>🔒 Dina Tech GO</h2>
+<p>Digite a senha para entrar</p>
+<input type="password" id="senha" placeholder="Senha">
+<button onclick="entrar()">ENTRAR</button>
+<p id="erro">Senha incorreta!</p>
 </div>
+
 <script>
-// Protege a página
-if(localStorage.getItem('logado')!=='sim'){
-  window.location.href='index.html';
+function entrar(){
+  var s = document.getElementById('senha').value;
+  if(s === 'dina2026'){
+    localStorage.setItem('logado','sim');
+    window.location.href = 'home.html';
+  } else {
+    document.getElementById('erro').style.display='block';
+  }
 }
-function sair(){
-  localStorage.removeItem('logado');
-  window.location.href='index.html';
+// se já logou, vai direto
+if(localStorage.getItem('logado')==='sim'){
+  window.location.href='home.html';
 }
 </script>
 </body>
