@@ -6,45 +6,48 @@ body{background:#f0f2f5;display:flex;min-height:100vh}
 #login{position:fixed;inset:0;background:linear-gradient(135deg,#1e1e2f,#2d2d44);display:flex;align-items:center;justify-content:center;z-index:9999;padding:15px}
 .box-login{background:#fff;padding:26px;border-radius:16px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.3);max-height:95vh;overflow-y:auto}
 .sidebar{width:260px;background:#1e1e2f;color:#a0a0b0;position:fixed;left:0;top:0;bottom:0;overflow-y:auto;z-index:20;transition:.3s}
-.sidebar.logo{padding:18px;background:#181825;display:flex;align-items:center;gap:12px}
-.sidebar.logo-icon{background:#ff7a45;width:45px;height:45px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:18px;overflow:hidden}
+.sidebar .logo{padding:18px;background:#181825;display:flex;align-items:center;gap:12px}
+.sidebar .logo-icon{background:#ff7a45;width:45px;height:45px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:18px;overflow:hidden}
 .sidebar h4{font-size:10px;color:#5a5a6a;padding:18px 20px 6px;text-transform:uppercase;letter-spacing:1px}
 .sidebar a{display:flex;align-items:center;gap:10px;padding:10px 20px;color:#a0a0b0;text-decoration:none;font-size:14px;cursor:pointer;border-left:3px solid transparent}
 .sidebar a:hover,.sidebar a.ativo{background:#252536;color:#fff;border-left-color:#ff7a45}
-.sidebar.sub{padding-left:52px;font-size:13px;padding-top:6px;padding-bottom:6px;color:#7a7a8a;display:block}
+.sidebar .sub{padding-left:52px;font-size:13px;padding-top:6px;padding-bottom:6px;color:#7a7a8a;display:block}
 .main{margin-left:260px;flex:1;min-height:100vh;width:calc(100% - 260px)}
 .topbar{background:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8ec;position:sticky;top:0;z-index:10}
-.btn{padding:10px 18px;border:none;border-radius:8px;font-weight:700;cursor:pointer}
+.btn{padding:8px 14px;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:12px}
 .btn-laranja{background:#ff6b35;color:#fff}
+.btn-verde{background:#22c55e;color:#fff}
+.btn-cinza{background:#fff;border:1px solid #ddd;color:#333}
 .card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.05);border:1px solid #eef0f4;margin-bottom:14px}
 .input{width:100%;padding:11px 14px;border:1px solid #dfe1e8;border-radius:8px;background:#fcfcfd;margin-top:6px;font-size:14px}
 label{font-size:11px;color:#555;font-weight:600;margin-top:10px;display:block}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:900px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.main{margin-left:0;width:100%}.grid2{grid-template-columns:1fr}#btn-menu{display:flex!important}}
 table{width:100%;border-collapse:collapse}th{font-size:11px;color:#888;text-align:left;padding:10px;border-bottom:1px solid #eee}td{padding:10px;font-size:13px;border-bottom:1px solid #f5f5f5}
+.badge{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700}
+.status-aberta{background:#fef3c7;color:#92400e}
+.status-concluida{background:#065f46;color:#fff}
+.status-aprovada{background:#d1fae5;color:#065f46}
 </style></head><body>
 
 <div id="login"><div class="box-login">
 <div id="area-login">
-<div style="text-align:center;margin-bottom:18px"><img id="logo-login" style="max-width:180px;border-radius:10px;display:none;margin:0 auto 10px"><div id="logo-fallback" style="background:#ff7a45;width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto;color:#fff;font-weight:900;font-size:24px">D</div><h2 style="margin-top:8px">DINATECH</h2><small style="color:#888">Sistema de Gestão</small><div style="background:#e8f5e9;color:#2e7d32;padding:6px 10px;border-radius:20px;font-size:10px;margin-top:8px;display:inline-block">✅ Liberado no celular</div></div>
+<div style="text-align:center;margin-bottom:18px"><div style="background:#ff7a45;width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto;color:#fff;font-weight:900;font-size:24px">D</div><h2 style="margin-top:8px">DINATECH</h2><small style="color:#888">Sistema de Gestão</small><div style="background:#e8f5e9;color:#2e7d32;padding:6px 10px;border-radius:20px;font-size:10px;margin-top:8px;display:inline-block">✅ Sistema liberado no celular</div></div>
 <label>Email</label><input id="email" class="input" value="resilvaalmeida31@gmail.com">
-<label>Senha (use: dina2026)</label><input id="senha" type="password" class="input" value="dina2026">
+<label>Senha</label><input id="senha" type="password" class="input" value="dina2026">
 <button class="btn btn-laranja" style="width:100%;margin-top:18px;padding:14px" onclick="entrar()">ENTRAR NO SISTEMA</button>
 <p id="erro" style="color:#ef4444;font-size:12px;display:none;margin-top:10px;text-align:center"></p>
-<div style="background:#f8f9fb;padding:12px;border-radius:10px;margin-top:15px"><small style="color:#666">Empresa DINATECH - CNPJ 67792840000105 já configurada</small></div>
-<button onclick="mostrarEmpresa()" style="background:none;border:none;color:#999;font-size:11px;width:100%;margin-top:12px">⚙ Ver / Editar dados da empresa</button>
+<button onclick="mostrarEmpresa()" style="background:none;border:none;color:#999;font-size:11px;width:100%;margin-top:12px">⚙ Editar empresa</button>
 </div>
-
 <div id="area-empresa" style="display:none">
 <h3 style="text-align:center">🏢 Empresa</h3>
 <label>Razão Social *</label><input id="emp-razao" class="input" value="DINATECH SOLUÇÕES AUTOMOTIVAS">
 <div class="grid2"><div><label>Nome Fantasia</label><input id="emp-fantasia" class="input" value="DINATECH"></div><div><label>CNPJ *</label><input id="emp-cnpj" class="input" value="67792840000105"></div></div>
-<div class="grid2"><div><label>Inscrição Estadual</label><input id="emp-ie" class="input" value="Isento"></div><div><label>Inscrição Municipal</label><input id="emp-im" class="input"></div></div>
 <label>Endereço</label><input id="emp-end" class="input" placeholder="Rua, número, bairro, cidade">
 <label>Logo</label><input type="file" id="emp-logo" accept="image/*" class="input" onchange="previewLogo(this)">
 <img id="prev-logo" style="max-width:200px;margin-top:10px;border-radius:8px;display:none">
 <button class="btn btn-laranja" style="width:100%;margin-top:15px" onclick="salvarEmpresa()">💾 Salvar e Entrar</button>
-<button onclick="voltarLogin()" style="background:none;border:none;color:#666;font-size:11px;width:100%;margin-top:10px">Voltar ao login</button>
+<button onclick="voltarLogin()" style="background:none;border:none;color:#666;font-size:11px;width:100%;margin-top:10px">Voltar</button>
 </div>
 </div></div>
 
@@ -61,8 +64,7 @@ table{width:100%;border-collapse:collapse}th{font-size:11px;color:#888;text-alig
 <a onclick="aba('caixa')" id="m-caixa">💳 Caixa</a>
 <a class="sub" onclick="aba('caixa')">Abertura</a>
 <a class="sub" onclick="aba('caixa')">Recebimento Venda/O.S</a>
-<a class="sub" onclick="aba('caixa')">Sangria</a>
-<a class="sub" onclick="aba('caixa')">Suprimento</a>
+<a class="sub" onclick="aba('caixa')">Sangria / Suprimento</a>
 <a class="sub" onclick="aba('caixa')">Relatórios</a>
 <a onclick="aba('pecas')" id="m-pecas">📦 Peças / Estoque</a>
 <a onclick="aba('config')" id="m-config">⚙️ Configurações</a>
@@ -70,10 +72,10 @@ table{width:100%;border-collapse:collapse}th{font-size:11px;color:#888;text-alig
 </div>
 
 <div class="main">
-<div class="topbar"><div style="display:flex;align-items:center;gap:12px"><button id="btn-menu" onclick="toggleSidebar()" style="display:none;background:#1e1e2f;color:#fff;border:none;padding:8px 12px;border-radius:8px;align-items:center;justify-content:center">☰</button><div><h2 id="titulo-pagina" style="font-size:18px">📊 Dashboard</h2><small style="color:#888" id="subtitulo">Bem-vindo à DINATECH</small></div></div><button class="btn btn-laranja" onclick="aba('config')">💾 Salvar Configurações</button></div>
+<div class="topbar"><div style="display:flex;align-items:center;gap:12px"><button id="btn-menu" onclick="toggleSidebar()" style="display:none;background:#1e1e2f;color:#fff;border:none;padding:8px 12px;border-radius:8px">☰</button><div><h2 id="titulo-pagina" style="font-size:18px">📊 Dashboard</h2><small style="color:#888" id="subtitulo">Bem-vindo à DINATECH</small></div></div><button class="btn btn-laranja" onclick="aba('config')">💾 Salvar</button></div>
 <div style="padding:16px">
 
-<div id="sec-dash" class="secao"><div class="grid2"><div class="card" style="border-left:4px solid #ff7a45"><small>FATURAMENTO</small><h2 id="d-fat">R$ 0</h2></div><div class="card" style="border-left:4px solid #22c55e"><small>LUCRO BRUTO</small><h2 id="d-lucro" style="color:#22c55e">R$ 0</h2></div></div><div class="grid2"><div class="card"><small>CAIXA</small><h3 id="d-caixa">Fechado</h3></div><div class="card"><small>O.S.</small><h3 id="d-os">0</h3></div></div><div class="card"><b>⚠ Estoque baixo com margem</b><div id="d-est" style="margin-top:8px;font-size:13px"></div></div></div>
+<div id="sec-dash" class="secao"><div class="grid2"><div class="card" style="border-left:4px solid #ff7a45"><small>FATURAMENTO</small><h2 id="d-fat">R$ 0</h2></div><div class="card" style="border-left:4px solid #22c55e"><small>LUCRO BRUTO</small><h2 id="d-lucro" style="color:#22c55e">R$ 0</h2></div></div><div class="grid2"><div class="card"><small>CAIXA</small><h3 id="d-caixa">Fechado</h3></div><div class="card"><small>O.S.</small><h3 id="d-os">0</h3></div></div><div class="card"><b>⚠ Estoque baixo</b><div id="d-est" style="margin-top:8px;font-size:13px"></div></div></div>
 
 <div id="sec-clientes" class="secao" style="display:none"><div class="card"><h3>👥 Clientes</h3><input type="hidden" id="cli-id"><div class="grid2"><div><label>Nome *</label><input id="cli-nome" class="input"></div><div><label>CPF/CNPJ</label><input id="cli-cpf" class="input"></div></div><div class="grid2"><div><label>Tel</label><input id="cli-tel" class="input"></div><div><label>End</label><input id="cli-end" class="input"></div></div><button class="btn btn-laranja" style="margin-top:12px;width:100%" onclick="salvarCli()">Salvar Cliente</button></div><div class="card"><table><tbody id="tab-cli"></tbody></table></div></div>
 
@@ -83,108 +85,230 @@ table{width:100%;border-collapse:collapse}th{font-size:11px;color:#888;text-alig
 
 <div id="sec-orc" class="secao" style="display:none"><div class="card"><h3>📝 Orçamento com margem</h3><label>Cliente</label><select id="orc-cli" class="input" onchange="filtraVei('orc')"></select><label>Veículo</label><select id="orc-vei" class="input"></select><label>Peça (lucro)</label><select id="orc-pec" class="input"></select><div class="grid2"><div><label>Qtd</label><input id="orc-qtd" type="number" value="1" class="input"></div><div><label>M.O.</label><input id="orc-mo" type="number" value="0" class="input"></div></div><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="addOrc()">+ Adicionar</button><div id="orc-itens" style="margin-top:12px"></div><div id="orc-total" style="background:#f8f9fb;padding:10px;border-radius:8px;margin-top:10px;font-weight:bold"></div><button class="btn" style="background:#22c55e;color:#fff;width:100%;margin-top:10px" onclick="salvarOrc()">Salvar Orçamento</button></div><div class="card"><div id="lista-orc"></div></div></div>
 
-<div id="sec-os" class="secao" style="display:none"><div class="card"><h3>🔧 Ordens de Serviço</h3><div id="lista-os"></div></div></div>
+<div id="sec-os" class="secao" style="display:none">
+<div id="os-lista" class="card">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h3>🔧 Ordens de Serviço</h3><input id="busca-os" class="input" style="max-width:200px;margin-top:0" placeholder="Buscar cliente, placa, OS" oninput="renderOS()"></div>
+<div id="lista-os"></div>
+</div>
+
+<div id="os-detalhe" style="display:none">
+<div class="card" style="border-top:4px solid #ff7a45">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">
+<div><div style="display:flex;align-items:center;gap:8px"><button onclick="voltarOS()" style="border:none;background:#f0f2f5;width:30px;height:30px;border-radius:50%">←</button><h2 id="os-numero">OS #24572</h2><span id="os-badge" class="badge status-concluida">Concluída</span></div><small id="os-cliente-veiculo" style="color:#666;margin-left:38px">JOSE CARLOS - HPV9460 GOL G3 2005</small></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<button class="btn btn-cinza" onclick="editarOS()">✏️ Editar</button>
+<button class="btn btn-cinza" onclick="reabrirOS()">🔄 Reabrir</button>
+<button class="btn btn-cinza" onclick="imprimirOS()">🖨️ Imprimir Nota de Serviço ▾</button>
+<button class="btn btn-cinza" onclick="gerarRecibo()">🧾 Recibo ▾</button>
+<button class="btn" style="background:#dcfce7;color:#166534" onclick="whatsOS()">💬 WhatsApp</button>
+<button class="btn btn-cinza" onclick="gerarOrcOS()">📋 Gerar Orçamento</button>
+<button class="btn" style="background:#ef4444;color:#fff" onclick="excluirOS()">🗑️ Excluir</button>
+</div>
+</div>
+
+<div style="margin-top:16px;display:flex;align-items:center;gap:10px">
+<label>Alterar Status:</label>
+<select id="os-status" class="input" style="max-width:220px;margin-top:0" onchange="alterarStatusOS()">
+<option>Aberta</option><option>Diagnóstico</option><option>Aguardando Aprovação</option><option>Aprovada</option><option>Rejeitada</option><option>Em Execução</option><option>Aguardando Peça</option><option>Concluída</option><option>Entregue</option><option>Cancelada</option>
+</select>
+</div>
+</div>
+
+<div class="card" style="margin-top:16px">
+<div style="display:flex;gap:20px;border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:12px">
+<b style="border-bottom:2px solid #ff7a45;padding-bottom:10px">Itens / Orçamento</b><span style="color:#888">Anexos</span><span style="color:#888">Histórico</span>
+</div>
+<div id="os-itens-detalhe"></div>
+<div style="text-align:right;margin-top:16px;border-top:1px solid #eee;padding-top:12px">
+<div>Subtotal itens: <b id="os-subtotal">R$ 0,00</b></div>
+<div style="font-size:18px;margin-top:6px">Total: <b id="os-total">R$ 0,00</b></div>
+</div>
+</div>
+</div>
+</div>
 
 <div id="sec-caixa" class="secao" style="display:none">
 <div class="grid2"><div class="card"><small>SALDO ATUAL</small><h2 id="cx-saldo">R$ 0</h2><small id="cx-status" style="color:#888">Fechado</small></div><div class="card"><small>ENTRADAS</small><h2 id="cx-ent" style="color:#22c55e">R$ 0</h2></div></div>
-<div class="grid2"><div class="card"><b>🔓 Abertura</b><input id="caixa-ab-v" type="number" class="input" placeholder="Valor inicial"><button class="btn btn-laranja" style="width:100%;margin-top:8px" onclick="abrirCaixa()">Abrir Caixa</button></div><div class="card"><b>💵 Recebimento Venda/O.S</b><input id="caixa-rec-d" class="input" placeholder="Descrição (OS, venda)"><div class="grid2"><div><input id="caixa-rec-v" type="number" class="input" placeholder="Valor R$"></div><div><select id="caixa-rec-forma" class="input"><option>Dinheiro</option><option>PIX</option><option>Cartão Crédito</option><option>Cartão Débito</option></select></div></div><button class="btn" style="background:#22c55e;color:#fff;width:100%;margin-top:8px" onclick="receberCaixa()">Receber</button></div></div>
+<div class="grid2"><div class="card"><b>🔓 Abertura</b><input id="caixa-ab-v" type="number" class="input" placeholder="Valor"><button class="btn btn-laranja" style="width:100%;margin-top:8px" onclick="abrirCaixa()">Abrir Caixa</button></div><div class="card"><b>💵 Recebimento</b><input id="caixa-rec-d" class="input" placeholder="Descrição"><div class="grid2"><div><input id="caixa-rec-v" type="number" class="input" placeholder="Valor"></div><div><select id="caixa-rec-forma" class="input"><option>Dinheiro</option><option>PIX</option><option>Cartão</option></select></div></div><button class="btn btn-verde" style="width:100%;margin-top:8px" onclick="receberCaixa()">Receber</button></div></div>
 <div class="grid2"><div class="card"><b>📤 Sangria</b><input id="caixa-san-v" type="number" class="input" placeholder="Valor"><input id="caixa-san-d" class="input" placeholder="Motivo"><button class="btn" style="background:#ef4444;color:#fff;width:100%;margin-top:8px" onclick="sangriaCaixa()">Sangria</button></div><div class="card"><b>📥 Suprimento</b><input id="caixa-sup-v" type="number" class="input" placeholder="Valor"><input id="caixa-sup-d" class="input" placeholder="Origem"><button class="btn" style="background:#3b82f6;color:#fff;width:100%;margin-top:8px" onclick="suprimentoCaixa()">Suprir</button></div></div>
-<div class="card"><b>📊 Relatórios por Forma</b><div id="cx-por-forma" style="margin-top:8px;font-size:12px"></div></div>
-<div class="card"><table><thead><tr><th>Hora</th><th>Tipo</th><th>Desc</th><th>Forma</th><th>Valor</th><th></th></tr></thead><tbody id="tab-caixa"></tbody></table></div>
+<div class="card"><table><tbody id="tab-caixa"></tbody></table></div>
 </div>
 
 <div id="sec-config" class="secao" style="display:none">
-<div class="card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:15px"><div style="background:#fff3ed;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center">🏢</div><div><b>Empresa</b><br><small style="color:#888">Dados gerais da empresa licenciada</small></div></div>
-<div class="grid2"><div><label>Razão Social *</label><input id="c-razao" class="input" value="DINATECH SOLUÇÕES AUTOMOTIVAS"></div><div><label>Nome Fantasia</label><input id="c-fantasia" class="input" value="DINATECH"></div></div>
-<div class="grid2"><div><label>CNPJ *</label><input id="c-cnpj" class="input" value="67792840000105"></div><div><label>Inscrição Estadual</label><input id="c-ie" class="input" value="Isento"></div></div>
-<div class="grid2"><div><label>Inscrição Municipal</label><input id="c-im" class="input"></div><div><label>Endereço</label><input id="c-end" class="input"></div></div>
-<div class="grid2"><div><label>Telefone</label><input id="c-tel" class="input"></div><div><label>Logo</label><input type="file" class="input" accept="image/*" onchange="previewLogo(this)"></div></div>
-<img id="logo-config" style="max-width:250px;margin-top:12px;border-radius:10px;display:none">
-<button class="btn btn-laranja" style="width:100%;margin-top:15px" onclick="salvarEmpresa2()">💾 Salvar Configurações</button>
-</div>
+<div class="card"><h3>🏢 Empresa</h3><label>Razão Social *</label><input id="c-razao" class="input" value="DINATECH SOLUÇÕES AUTOMOTIVAS"><label>CNPJ *</label><input id="c-cnpj" class="input" value="67792840000105"><button class="btn btn-laranja" style="width:100%;margin-top:15px" onclick="salvarEmpresa2()">💾 Salvar Configurações</button></div>
 </div>
 
 </div>
 </div>
 
 <script>
-let emp=JSON.parse(localStorage.getItem('dtg_emp')||'null'),cli=JSON.parse(localStorage.getItem('dtg_cli')||'[]'),vei=JSON.parse(localStorage.getItem('dtg_vei')||'[]'),pec=JSON.parse(localStorage.getItem('dtg_pecas')||'[]'),orc=JSON.parse(localStorage.getItem('dtg_orc')||'[]'),osl=JSON.parse(localStorage.getItem('dtg_os')||'[]'),cx=JSON.parse(localStorage.getItem('dtg_caixa')||'[]'),ab=JSON.parse(localStorage.getItem('dtg_ab')||'null'),logoB64=localStorage.getItem('dtg_logo')||'',itO=[];
+let emp=JSON.parse(localStorage.getItem('dtg_emp')||'null'),cli=JSON.parse(localStorage.getItem('dtg_cli')||'[]'),vei=JSON.parse(localStorage.getItem('dtg_vei')||'[]'),pec=JSON.parse(localStorage.getItem('dtg_pecas')||'[]'),orc=JSON.parse(localStorage.getItem('dtg_orc')||'[]'),osl=JSON.parse(localStorage.getItem('dtg_os')||'[]'),cx=JSON.parse(localStorage.getItem('dtg_caixa')||'[]'),ab=JSON.parse(localStorage.getItem('dtg_ab')||'null'),logoB64=localStorage.getItem('dtg_logo')||'',itO=[],osAtual=null;
+
 function init(){
- if(!emp){emp={razao:'DINATECH SOLUÇÕES AUTOMOTIVAS',fantasia:'DINATECH',cnpj:'67792840000105',ie:'Isento',nome:'DINATECH SOLUÇÕES AUTOMOTIVAS'};localStorage.setItem('dtg_emp',JSON.stringify(emp))}
- if(logoB64){
-   let img1=document.getElementById('logo-login'); if(img1){img1.src=logoB64;img1.style.display='block';}
-   let fb=document.getElementById('logo-fallback'); if(fb) fb.style.display='none';
-   let img2=document.getElementById('logo-config'); if(img2){img2.src=logoB64;img2.style.display='block';}
-   let side=document.getElementById('logo-side'); if(side) side.innerHTML=`<img src="${logoB64}" style="width:100%;height:100%;object-fit:cover;border-radius:12px">`;
- }
- let cr=document.getElementById('c-razao'); if(cr) cr.value=emp.razao||emp.nome||'DINATECH SOLUÇÕES AUTOMOTIVAS';
- let cf=document.getElementById('c-fantasia'); if(cf) cf.value=emp.fantasia||'DINATECH';
- let cc=document.getElementById('c-cnpj'); if(cc) cc.value=emp.cnpj||'67792840000105';
- let se=document.getElementById('side-empresa'); if(se) se.textContent=emp.razao||emp.nome;
- if(localStorage.getItem('logado')==='sim'){
-   document.getElementById('login').style.display='none';
-   let sem=document.getElementById('side-email'); if(sem) sem.textContent=localStorage.getItem('email_logado')||'resilvaalmeida31@gmail.com';
- }
+ if(!emp){emp={razao:'DINATECH SOLUÇÕES AUTOMOTIVAS',fantasia:'DINATECH',cnpj:'67792840000105',nome:'DINATECH SOLUÇÕES AUTOMOTIVAS'};localStorage.setItem('dtg_emp',JSON.stringify(emp))}
+ if(logoB64){let s=document.getElementById('logo-side');if(s)s.innerHTML=`<img src="${logoB64}" style="width:100%;height:100%;object-fit:cover;border-radius:12px">`;}
+ document.getElementById('c-razao').value=emp.razao||emp.nome;document.getElementById('c-cnpj').value=emp.cnpj;document.getElementById('side-empresa').textContent=emp.razao||emp.nome;
+ if(localStorage.getItem('logado')==='sim'){document.getElementById('login').style.display='none';document.getElementById('side-email').textContent=localStorage.getItem('email_logado')||'';}
  renderAll();
 }
-function previewLogo(input){let f=input.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{logoB64=e.target.result;let p=document.getElementById('prev-logo'); if(p){p.src=logoB64;p.style.display='block';} let lc=document.getElementById('logo-config'); if(lc){lc.src=logoB64;lc.style.display='block';} localStorage.setItem('dtg_logo',logoB64);};r.readAsDataURL(f)}
-function salvarEmpresa(){let razao=document.getElementById('emp-razao').value||'DINATECH SOLUÇÕES AUTOMOTIVAS',fantasia=document.getElementById('emp-fantasia').value,cnpj=document.getElementById('emp-cnpj').value||'67792840000105';emp={razao:razao,fantasia:fantasia,cnpj:cnpj,nome:razao};localStorage.setItem('dtg_emp',JSON.stringify(emp));if(logoB64)localStorage.setItem('dtg_logo',logoB64);document.getElementById('login').style.display='none';renderAll();}
-function salvarEmpresa2(){let razao=document.getElementById('c-razao').value,fantasia=document.getElementById('c-fantasia').value,cnpj=document.getElementById('c-cnpj').value;emp={razao:razao,fantasia:fantasia,cnpj:cnpj,nome:razao};localStorage.setItem('dtg_emp',JSON.stringify(emp));if(logoB64)localStorage.setItem('dtg_logo',logoB64);alert('Salvo!');location.reload();}
+function previewLogo(i){let f=i.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{logoB64=e.target.result;localStorage.setItem('dtg_logo',logoB64);let p=document.getElementById('prev-logo');if(p){p.src=logoB64;p.style.display='block';}};r.readAsDataURL(f)}
+function salvarEmpresa(){let razao=document.getElementById('emp-razao').value;emp={razao:razao,fantasia:document.getElementById('emp-fantasia').value,cnpj:document.getElementById('emp-cnpj').value,nome:razao};localStorage.setItem('dtg_emp',JSON.stringify(emp));document.getElementById('login').style.display='none';renderAll();}
+function salvarEmpresa2(){emp.razao=document.getElementById('c-razao').value;emp.cnpj=document.getElementById('c-cnpj').value;localStorage.setItem('dtg_emp',JSON.stringify(emp));alert('Salvo!');location.reload();}
 function mostrarEmpresa(){document.getElementById('area-login').style.display='none';document.getElementById('area-empresa').style.display='block';}
 function voltarLogin(){document.getElementById('area-empresa').style.display='none';document.getElementById('area-login').style.display='block';}
-function entrar(){let e=document.getElementById('email').value.trim(),s=document.getElementById('senha').value.trim().toLowerCase();let er=document.getElementById('erro');if(!e.includes('@')){er.textContent='Digite email válido';er.style.display='block';return;}if(s!==''&&s!=='dina2026'&&s!=='dina'&&s!=='123'){er.textContent='Senha: dina2026';er.style.display='block';return;}localStorage.setItem('logado','sim');localStorage.setItem('email_logado',e);document.getElementById('login').style.display='none';let se=document.getElementById('side-email'); if(se) se.textContent=e;renderAll();}
+function entrar(){let e=document.getElementById('email').value.trim(),s=document.getElementById('senha').value.trim().toLowerCase();let er=document.getElementById('erro');if(!e.includes('@')){er.textContent='Email inválido';er.style.display='block';return;}if(s!==''&&s!=='dina2026'&&s!=='dina'){er.textContent='Senha: dina2026';er.style.display='block';return;}localStorage.setItem('logado','sim');localStorage.setItem('email_logado',e);document.getElementById('login').style.display='none';renderAll();}
 function sair(){localStorage.removeItem('logado');location.reload();}
 function save(){localStorage.setItem('dtg_cli',JSON.stringify(cli));localStorage.setItem('dtg_vei',JSON.stringify(vei));localStorage.setItem('dtg_pecas',JSON.stringify(pec));localStorage.setItem('dtg_orc',JSON.stringify(orc));localStorage.setItem('dtg_os',JSON.stringify(osl));localStorage.setItem('dtg_caixa',JSON.stringify(cx));localStorage.setItem('dtg_ab',JSON.stringify(ab));renderAll();}
-function aba(id){document.querySelectorAll('.secao').forEach(s=>s.style.display='none');let map={dash:'sec-dash',clientes:'sec-clientes',veiculos:'sec-veiculos',pecas:'sec-pecas',orc:'sec-orc',os:'sec-os',caixa:'sec-caixa',config:'sec-config'};let el=document.getElementById(map[id]);if(el)el.style.display='block';document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('ativo'));let mid=document.getElementById('m-'+id);if(mid)mid.classList.add('ativo');let titles={dash:'📊 Dashboard',clientes:'👥 Clientes',veiculos:'🚗 Veículos',pecas:'📦 Peças / Estoque',orc:'📝 Orçamentos',os:'🔧 Ordem de Serviço',caixa:'💳 Caixa',config:'⚙️ Configurações'};let tp=document.getElementById('titulo-pagina');if(tp)tp.textContent=titles[id]||id;if(window.innerWidth<=900){let sb=document.getElementById('sidebar');if(sb)sb.classList.remove('open');}}
-function toggleSidebar(){let sb=document.getElementById('sidebar');if(sb)sb.classList.toggle('open');}
-function salvarCli(){let id=document.getElementById('cli-id').value,n=document.getElementById('cli-nome').value;if(!n)return alert('Nome obrigatório');let c={id:id||Date.now()+'',nome:n,cpf:document.getElementById('cli-cpf').value,tel:document.getElementById('cli-tel').value,end:document.getElementById('cli-end').value};if(id){let idx=cli.findIndex(x=>x.id==id);if(idx>=0)cli[idx]=c;}else cli.push(c);document.getElementById('cli-id').value='';document.getElementById('cli-nome').value='';save();}
+function aba(id){document.querySelectorAll('.secao').forEach(s=>s.style.display='none');let map={dash:'sec-dash',clientes:'sec-clientes',veiculos:'sec-veiculos',pecas:'sec-pecas',orc:'sec-orc',os:'sec-os',caixa:'sec-caixa',config:'sec-config'};let el=document.getElementById(map[id]);if(el)el.style.display='block';document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('ativo'));let mid=document.getElementById('m-'+id);if(mid)mid.classList.add('ativo');let t={dash:'📊 Dashboard',clientes:'👥 Clientes',veiculos:'🚗 Veículos',pecas:'📦 Peças',orc:'📝 Orçamentos',os:'🔧 Ordem de Serviço',caixa:'💳 Caixa',config:'⚙️ Configurações'};document.getElementById('titulo-pagina').textContent=t[id]||id;if(window.innerWidth<900)document.getElementById('sidebar').classList.remove('open');}
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');}
+
+function salvarCli(){let id=document.getElementById('cli-id').value,n=document.getElementById('cli-nome').value;if(!n)return alert('Nome');let c={id:id||Date.now()+'',nome:n,cpf:document.getElementById('cli-cpf').value,tel:document.getElementById('cli-tel').value,end:document.getElementById('cli-end').value};if(id){cli[cli.findIndex(x=>x.id==id)]=c}else cli.push(c);document.getElementById('cli-id').value='';document.getElementById('cli-nome').value='';save();}
 function renderCli(){let tb=document.getElementById('tab-cli');if(tb)tb.innerHTML=cli.map(c=>`<tr><td><b>${c.nome}</b><br><small style="color:#888">${c.tel||''}</small></td><td><button onclick="editCli('${c.id}')">✏️</button> <button onclick="delCli('${c.id}')">🗑️</button></td></tr>`).join('');let o=cli.map(c=>`<option value="${c.id}">${c.nome}</option>`).join('');['vei-cli','orc-cli'].forEach(id=>{let el=document.getElementById(id);if(el)el.innerHTML='<option value="">Selecione</option>'+o});}
-function editCli(id){let c=cli.find(x=>x.id==id);if(!c)return;document.getElementById('cli-id').value=c.id;document.getElementById('cli-nome').value=c.nome;document.getElementById('cli-cpf').value=c.cpf||'';document.getElementById('cli-tel').value=c.tel||'';document.getElementById('cli-end').value=c.end||'';aba('clientes');}
-function delCli(id){if(confirm('Apagar cliente?')){cli=cli.filter(c=>c.id!=id);save();}}
-function salvarVei(){let id=document.getElementById('vei-id').value,cid=document.getElementById('vei-cli').value,pl=document.getElementById('vei-placa').value.toUpperCase();if(!pl||!cid)return alert('Placa e cliente obrigatórios');let v={id:id||Date.now()+'',clienteId:cid,placa:pl,marca:document.getElementById('vei-marca').value,modelo:document.getElementById('vei-modelo').value,ano:document.getElementById('vei-ano').value};if(id){let idx=vei.findIndex(x=>x.id==id);if(idx>=0)vei[idx]=v;}else vei.push(v);document.getElementById('vei-id').value='';document.getElementById('vei-placa').value='';save();}
-function renderVei(){let tb=document.getElementById('tab-vei');if(tb)tb.innerHTML=vei.map(v=>{let cl=cli.find(c=>c.id==v.clienteId);return `<tr><td><b>${v.placa}</b> - ${v.marca||''} ${v.modelo||''}<br><small style="color:#888">${cl?cl.nome:''}</small></td><td><button onclick="editVei('${v.id}')">✏️</button> <button onclick="delVei('${v.id}')">🗑️</button></td></tr>`}).join('');}
-function editVei(id){let v=vei.find(x=>x.id==id);if(!v)return;document.getElementById('vei-id').value=v.id;document.getElementById('vei-cli').value=v.clienteId;document.getElementById('vei-placa').value=v.placa;document.getElementById('vei-marca').value=v.marca||'';document.getElementById('vei-modelo').value=v.modelo||'';let ano=document.getElementById('vei-ano');if(ano)ano.value=v.ano||'';aba('veiculos');}
-function delVei(id){if(confirm('Apagar veículo?')){vei=vei.filter(v=>v.id!=id);save();}}
-function filtraVei(tipo){let cid=document.getElementById(tipo+'-cli').value;let sel=document.getElementById(tipo+'-vei');if(!sel)return;let lista=vei.filter(v=>v.clienteId==cid);sel.innerHTML=lista.map(v=>`<option value="${v.id}">${v.placa} - ${v.modelo||''}</option>`).join('')||'<option value="">Nenhum veículo</option>';}
-function calc(){let c=parseFloat(document.getElementById('pec-custo').value)||0,m=parseFloat(document.getElementById('pec-marg').value)||0,v=c*(1+m/100);document.getElementById('pec-venda').value=v.toFixed(2);let el=document.getElementById('pec-lucro');if(el)el.textContent='R$ '+(v-c).toFixed(2);}
-function calc2(){let c=parseFloat(document.getElementById('pec-custo').value)||0,v=parseFloat(document.getElementById('pec-venda').value)||0;if(c>0)document.getElementById('pec-marg').value=(((v-c)/c)*100).toFixed(0);let el=document.getElementById('pec-lucro');if(el)el.textContent='R$ '+(v-c).toFixed(2);}
-function salvarPec(){let id=document.getElementById('pec-id').value,n=document.getElementById('pec-nome').value;if(!n)return alert('Nome da peça obrigatório');let p={id:id||Date.now()+'',nome:n,custo:parseFloat(document.getElementById('pec-custo').value)||0,venda:parseFloat(document.getElementById('pec-venda').value)||0,est:parseInt(document.getElementById('pec-est').value)||0};if(id){let idx=pec.findIndex(x=>x.id==id);if(idx>=0)pec[idx]=p;}else pec.push(p);document.getElementById('pec-id').value='';document.getElementById('pec-nome').value='';document.getElementById('pec-custo').value='';document.getElementById('pec-venda').value='';document.getElementById('pec-est').value='';save();}
-function renderPec(){let tb=document.getElementById('tab-pec');if(tb)tb.innerHTML=pec.map(p=>`<tr><td><b>${p.nome}</b></td><td style="color:#22c55e;font-weight:bold">R$ ${(p.venda-p.custo).toFixed(2)}</td><td>${p.est}</td><td><button onclick="editPec('${p.id}')">✏️</button> <button onclick="delPec('${p.id}')">🗑️</button></td></tr>`).join('');let o=pec.map(p=>`<option value="${p.id}">${p.nome} - R$${p.venda} | Lucro R$${(p.venda-p.custo).toFixed(2)}</option>`).join('');let orcP=document.getElementById('orc-pec');if(orcP)orcP.innerHTML='<option value="">Selecione</option>'+o;}
-function editPec(id){let p=pec.find(x=>x.id==id);if(!p)return;document.getElementById('pec-id').value=p.id;document.getElementById('pec-nome').value=p.nome;document.getElementById('pec-custo').value=p.custo;document.getElementById('pec-venda').value=p.venda;document.getElementById('pec-est').value=p.est;calc();aba('pecas');}
-function delPec(id){if(confirm('Apagar peça?')){pec=pec.filter(p=>p.id!=id);save();}}
-function addOrc(){let pid=document.getElementById('orc-pec').value,q=parseInt(document.getElementById('orc-qtd').value)||1,mo=parseFloat(document.getElementById('orc-mo').value)||0;let p=pec.find(x=>x.id==pid);if(!p)return alert('Selecione uma peça');itO.push({pecaId:p.id,nome:p.nome,custo:p.custo,venda:p.venda,qtd:q,mo:mo,lucro:p.venda-p.custo});renderItO();}
-function renderItO(){let tot=0,luc=0;let cont=document.getElementById('orc-itens');if(!cont)return;cont.innerHTML=itO.map((it,i)=>{tot+=it.venda*it.qtd+it.mo;luc+=it.lucro*it.qtd+it.mo;return `<div style="display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:6px;font-size:12px"><span>${it.nome} x${it.qtd}</span><span style="color:#22c55e">Lucro R$${(it.lucro*it.qtd+it.mo).toFixed(2)}</span><span><button onclick="itO.splice(${i},1);renderItO()" style="border:none;background:none">❌</button></span></div>`}).join('');let totEl=document.getElementById('orc-total');if(totEl)totEl.innerHTML=`Total: R$ ${tot.toFixed(2)} | <span style="color:#22c55e">Lucro: R$ ${luc.toFixed(2)}</span>`;}
-function salvarOrc(){let cid=document.getElementById('orc-cli').value;if(!cid||!itO.length)return alert('Selecione cliente e adicione peças');let tot=itO.reduce((s,it)=>s+it.venda*it.qtd+it.mo,0),cus=itO.reduce((s,it)=>s+it.custo*it.qtd,0);orc.push({id:Date.now(),clienteId:cid,veiculoId:document.getElementById('orc-vei').value,itens:[...itO],total:tot,custo:cus,lucro:tot-cus});itO=[];let cont=document.getElementById('orc-itens');if(cont)cont.innerHTML='';let totEl=document.getElementById('orc-total');if(totEl)totEl.innerHTML='';save();alert('Orçamento salvo!');}
-function renderOrc(){let el=document.getElementById('lista-orc');if(!el)return;el.innerHTML=orc.slice().reverse().map(o=>{let cl=cli.find(c=>c.id==o.clienteId);return `<div class="card" style="border-left:4px solid #ff7a45"><b>#${o.id}</b> - ${cl?cl.nome:'Cliente'} - R$${o.total.toFixed(2)}<br><span style="color:#22c55e;font-weight:bold">Lucro R$${o.lucro.toFixed(2)}</span><br><small>${o.itens.map(it=>it.nome+' x'+it.qtd).join(', ')}</small><br><button class="btn" style="background:#22c55e;color:#fff;padding:6px 12px;font-size:11px;margin-top:6px" onclick="aprovOrc(${o.id})">Aprovar p/ OS + Caixa</button> <button onclick="delOrc(${o.id})" style="background:#ef4444;color:#fff;border:none;padding:6px 10px;border-radius:6px;font-size:11px">Apagar</button></div>`}).join('')||'<small style="color:#999">Nenhum orçamento</small>';}
-function delOrc(id){if(confirm('Apagar orçamento?')){orc=orc.filter(o=>o.id!=id);save();}}
-function aprovOrc(id){let o=orc.find(x=>x.id==id);if(!o)return;osl.push({id:Date.now(),clienteId:o.clienteId,veiculoId:o.veiculoId,total:o.total,custo:o.custo,lucro:o.lucro,itens:o.itens});o.itens.forEach(it=>{let p=pec.find(x=>x.id==it.pecaId);if(p)p.est-=it.qtd;});cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'entrada',desc:'OS aprovada #'+id,forma:'Dinheiro',valor:o.total,lucro:o.lucro});save();aba('os');alert('OS criada e lançada no caixa!');}
-function renderOS(){let el=document.getElementById('lista-os');if(!el)return;el.innerHTML=osl.slice().reverse().map(o=>{let cl=cli.find(c=>c.id==o.clienteId);return `<div class="card"><b>OS #${o.id}</b> - ${cl?cl.nome:''} - R$${o.total.toFixed(2)} | <span style="color:#22c55e">Lucro R$${(o.lucro||0).toFixed(2)}</span><br><small>${o.itens?o.itens.map(it=>it.nome).join(', '):''}</small></div>`}).join('')||'<small style="color:#999">Nenhuma OS</small>';}
-function abrirCaixa(){let v=parseFloat(document.getElementById('caixa-ab-v').value);if(!v||v<=0)return alert('Digite valor de abertura');ab={valor:v,data:new Date().toISOString(),aberto:true};cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'abertura',desc:'Abertura de Caixa',forma:'Dinheiro',valor:v});let st=document.getElementById('caixa-status');if(st)st.textContent='✅ Aberto com R$ '+v.toFixed(2);save();}
-function receberCaixa(){let d=document.getElementById('caixa-rec-d').value||'Recebimento',v=parseFloat(document.getElementById('caixa-rec-v').value),forma=document.getElementById('caixa-rec-forma').value;if(!v||v<=0)return alert('Valor inválido');if(!ab||!ab.aberto){alert('Abra o caixa primeiro!');return;}cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'entrada',desc:d,forma:forma,valor:v,lucro:v});document.getElementById('caixa-rec-d').value='';document.getElementById('caixa-rec-v').value='';save();}
-function sangriaCaixa(){let v=parseFloat(document.getElementById('caixa-san-v').value),d=document.getElementById('caixa-san-d').value||'Sangria';if(!v||v<=0)return alert('Valor inválido');if(!ab||!ab.aberto){alert('Abra o caixa primeiro!');return;}cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'sangria',desc:d,forma:'Dinheiro',valor:v});document.getElementById('caixa-san-v').value='';document.getElementById('caixa-san-d').value='';save();}
-function suprimentoCaixa(){let v=parseFloat(document.getElementById('caixa-sup-v').value),d=document.getElementById('caixa-sup-d').value||'Suprimento';if(!v||v<=0)return alert('Valor inválido');if(!ab||!ab.aberto){alert('Abra o caixa primeiro!');return;}cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'suprimento',desc:d,forma:'Dinheiro',valor:v});document.getElementById('caixa-sup-v').value='';document.getElementById('caixa-sup-d').value='';save();}
+function editCli(id){let c=cli.find(x=>x.id==id);document.getElementById('cli-id').value=c.id;document.getElementById('cli-nome').value=c.nome;document.getElementById('cli-cpf').value=c.cpf||'';document.getElementById('cli-tel').value=c.tel||'';document.getElementById('cli-end').value=c.end||'';aba('clientes');}
+function delCli(id){if(confirm('Apagar?')){cli=cli.filter(c=>c.id!=id);save();}}
+
+function salvarVei(){let id=document.getElementById('vei-id').value,cid=document.getElementById('vei-cli').value,pl=document.getElementById('vei-placa').value.toUpperCase();if(!pl||!cid)return alert('Placa e cliente');let v={id:id||Date.now()+'',clienteId:cid,placa:pl,marca:document.getElementById('vei-marca').value,modelo:document.getElementById('vei-modelo').value,ano:document.getElementById('vei-ano').value};if(id){vei[vei.findIndex(x=>x.id==id)]=v}else vei.push(v);document.getElementById('vei-id').value='';document.getElementById('vei-placa').value='';save();}
+function renderVei(){let tb=document.getElementById('tab-vei');if(tb)tb.innerHTML=vei.map(v=>{let cl=cli.find(c=>c.id==v.clienteId);return `<tr><td><b>${v.placa}</b> - ${v.marca} ${v.modelo}<br><small style="color:#888">${cl?cl.nome:''}</small></td><td><button onclick="delVei('${v.id}')">🗑️</button></td></tr>`}).join('');}
+function delVei(id){if(confirm('Apagar?')){vei=vei.filter(v=>v.id!=id);save();}}
+
+function filtraVei(tipo){let cid=document.getElementById(tipo+'-cli').value;let sel=document.getElementById(tipo+'-vei');let lista=vei.filter(v=>v.clienteId==cid);sel.innerHTML=lista.map(v=>`<option value="${v.id}">${v.placa} - ${v.modelo}</option>`).join('')||'<option>Nenhum</option>';}
+function calc(){let c=parseFloat(document.getElementById('pec-custo').value)||0,m=parseFloat(document.getElementById('pec-marg').value)||0,v=c*(1+m/100);document.getElementById('pec-venda').value=v.toFixed(2);document.getElementById('pec-lucro').textContent='R$ '+(v-c).toFixed(2);}
+function calc2(){let c=parseFloat(document.getElementById('pec-custo').value)||0,v=parseFloat(document.getElementById('pec-venda').value)||0;if(c>0)document.getElementById('pec-marg').value=(((v-c)/c)*100).toFixed(0);document.getElementById('pec-lucro').textContent='R$ '+(v-c).toFixed(2);}
+function salvarPec(){let id=document.getElementById('pec-id').value,n=document.getElementById('pec-nome').value;if(!n)return alert('Nome');let p={id:id||Date.now()+'',nome:n,custo:parseFloat(document.getElementById('pec-custo').value)||0,venda:parseFloat(document.getElementById('pec-venda').value)||0,est:parseInt(document.getElementById('pec-est').value)||0};if(id){pec[pec.findIndex(x=>x.id==id)]=p}else pec.push(p);document.getElementById('pec-id').value='';document.getElementById('pec-nome').value='';save();}
+function renderPec(){let tb=document.getElementById('tab-pec');if(tb)tb.innerHTML=pec.map(p=>`<tr><td>${p.nome}</td><td style="color:#22c55e">R$ ${(p.venda-p.custo).toFixed(2)}</td><td>${p.est}</td><td><button onclick="delPec('${p.id}')">🗑️</button></td></tr>`).join('');let o=pec.map(p=>`<option value="${p.id}">${p.nome} - R$${p.venda}</option>`).join('');let el=document.getElementById('orc-pec');if(el)el.innerHTML='<option value="">Selecione</option>'+o;}
+function delPec(id){if(confirm('Apagar?')){pec=pec.filter(p=>p.id!=id);save();}}
+
+function addOrc(){let pid=document.getElementById('orc-pec').value,q=parseInt(document.getElementById('orc-qtd').value)||1,mo=parseFloat(document.getElementById('orc-mo').value)||0;let p=pec.find(x=>x.id==pid);if(!p)return alert('Peça');itO.push({pecaId:p.id,nome:p.nome,custo:p.custo,venda:p.venda,qtd:q,mo:mo,lucro:p.venda-p.custo,tipo:'Peça'});renderItO();}
+function renderItO(){let tot=0,luc=0;let c=document.getElementById('orc-itens');if(!c)return;c.innerHTML=itO.map((it,i)=>{tot+=it.venda*it.qtd+it.mo;luc+=it.lucro*it.qtd+it.mo;return `<div style="display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:6px;font-size:12px"><span>${it.nome} x${it.qtd}</span><span style="color:#22c55e">R$${(it.lucro*it.qtd+it.mo).toFixed(2)}</span><span><button onclick="itO.splice(${i},1);renderItO()" style="border:none;background:none">❌</button></span></div>`}).join('');document.getElementById('orc-total').innerHTML=`Total: R$ ${tot.toFixed(2)} | <span style="color:#22c55e">Lucro: R$ ${luc.toFixed(2)}</span>`;}
+function salvarOrc(){let cid=document.getElementById('orc-cli').value;if(!cid||!itO.length)return alert('Cliente e peças');let tot=itO.reduce((s,it)=>s+it.venda*it.qtd+it.mo,0),cus=itO.reduce((s,it)=>s+it.custo*it.qtd,0);orc.push({id:Date.now(),clienteId:cid,veiculoId:document.getElementById('orc-vei').value,itens:[...itO],total:tot,custo:cus,lucro:tot-cus});itO=[];document.getElementById('orc-itens').innerHTML='';document.getElementById('orc-total').innerHTML='';save();alert('Orçamento salvo!');}
+function renderOrc(){let el=document.getElementById('lista-orc');if(!el)return;el.innerHTML=orc.slice().reverse().map(o=>{let cl=cli.find(c=>c.id==o.clienteId);return `<div class="card" style="border-left:4px solid #ff7a45"><b>#${o.id}</b> - ${cl?cl.nome:''} - R$${o.total.toFixed(2)}<br><span style="color:#22c55e">Lucro R$${o.lucro.toFixed(2)}</span><br><button class="btn btn-verde" style="padding:6px 10px;font-size:11px;margin-top:6px" onclick="aprovOrc(${o.id})">Aprovar p/ OS</button> <button onclick="delOrc(${o.id})" style="background:#ef4444;color:#fff;border:none;padding:6px 10px;border-radius:6px">Apagar</button></div>`}).join('')||'Nenhum';}
+function delOrc(id){if(confirm('Apagar?')){orc=orc.filter(o=>o.id!=id);save();}}
+function aprovOrc(id){let o=orc.find(x=>x.id==id);if(!o)return;let novaOS={id:Date.now(),osNumero:'OS #'+Date.now().toString().slice(-5),clienteId:o.clienteId,veiculoId:o.veiculoId,total:o.total,custo:o.custo,lucro:o.lucro,itens:o.itens,status:'Aberta',data:new Date().toISOString()};osl.push(novaOS);o.itens.forEach(it=>{let p=pec.find(x=>x.id==it.pecaId);if(p)p.est-=it.qtd;});cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'entrada',desc:'OS '+novaOS.osNumero,forma:'Dinheiro',valor:o.total,lucro:o.lucro});save();aba('os');verOS(novaOS.id);}
+
+// OS - FUNCIONANDO IGUAL DA FOTO
+function renderOS(){
+ let busca=(document.getElementById('busca-os')?.value||'').toLowerCase();
+ let lista=osl.filter(o=>{
+   let cl=cli.find(c=>c.id==o.clienteId);
+   let ve=vei.find(v=>v.id==o.veiculoId);
+   let txt=`${o.osNumero||''} ${cl?cl.nome:''} ${ve?ve.placa:''}`.toLowerCase();
+   return txt.includes(busca);
+ });
+ let el=document.getElementById('lista-os');
+ if(!el)return;
+ if(!lista.length){el.innerHTML='<div style="text-align:center;color:#999;padding:20px">Nenhuma OS encontrada</div>';return;}
+ el.innerHTML=lista.slice().reverse().map(o=>{
+   let cl=cli.find(c=>c.id==o.clienteId);
+   let ve=vei.find(v=>v.id==o.veiculoId);
+   let status=o.status||'Aberta';
+   let cor=status==='Concluída'?'#065f46':status==='Aberta'?'#92400e':'#374151';
+   let bg=status==='Concluída'?'#065f46':status==='Aberta'?'#fef3c7':'#f3f4f6';
+   return `<div class="card" style="cursor:pointer;border-left:4px solid ${status==='Concluída'?'#065f46':'#ff7a45'}" onclick="verOS('${o.id}')">
+   <div style="display:flex;justify-content:space-between"><div><b>${o.osNumero||'OS #'+o.id}</b> <span style="background:${bg};color:${cor};padding:3px 8px;border-radius:6px;font-size:10px;margin-left:8px">${status}</span><br><small style="color:#666">${cl?cl.nome:'Cliente'} • ${ve?ve.placa+' '+(ve.modelo||''):'Sem veículo'}</small></div><div style="text-align:right"><b>R$ ${o.total.toFixed(2)}</b><br><small style="color:#888">${new Date(o.data).toLocaleDateString()}</small></div></div>`;
+ }).join('');
+}
+function verOS(id){
+ let o=osl.find(x=>x.id==id||x.id+''==id);
+ if(!o)return;
+ osAtual=o;
+ let cl=cli.find(c=>c.id==o.clienteId);
+ let ve=vei.find(v=>v.id==o.veiculoId);
+ document.getElementById('os-lista').style.display='none';
+ document.getElementById('os-detalhe').style.display='block';
+ document.getElementById('os-numero').textContent=o.osNumero||'OS #'+o.id;
+ document.getElementById('os-badge').textContent=o.status||'Aberta';
+ document.getElementById('os-badge').className='badge '+(o.status==='Concluída'?'status-concluida':o.status==='Aberta'?'status-aberta':'');
+ document.getElementById('os-cliente-veiculo').textContent=`${cl?cl.nome.toUpperCase():''} • ${ve?ve.placa+' '+ (ve.modelo||'') :''}`;
+ document.getElementById('os-status').value=o.status||'Aberta';
+ 
+ let html=`<table><thead><tr><th>TIPO</th><th>DESCRIÇÃO</th><th>QTD</th><th>UNIT.</th><th>DESC.</th><th>TOTAL</th></tr></thead><tbody>`;
+ (o.itens||[]).forEach(it=>{
+   html+=`<tr><td><span style="background:#f3f4f6;padding:3px 8px;border-radius:6px;font-size:11px">${it.tipo||'Peça'}</span></td><td>${it.nome}${it.mo?'<br><small>Serviço técnico</small>':''}</td><td>${it.qtd}</td><td>R$ ${(it.venda||0).toFixed(2)}</td><td>—</td><td><b>R$ ${((it.venda*it.qtd)+(it.mo||0)).toFixed(2)}</b></td></tr>`;
+ });
+ if(o.itens&&o.itens.some(it=>it.mo>0)){
+   o.itens.filter(it=>it.mo>0).forEach(it=>{
+     if(!it.nome.toLowerCase().includes('serviço')){
+       html+=`<tr><td><span style="background:#f3f4f6;padding:3px 8px;border-radius:6px;font-size:11px">Serviço</span></td><td>Serviço técnico</td><td>1</td><td>R$ ${it.mo.toFixed(2)}</td><td>—</td><td><b>R$ ${it.mo.toFixed(2)}</b></td></tr>`;
+     }
+   });
+ }
+ html+=`</tbody></table>`;
+ document.getElementById('os-itens-detalhe').innerHTML=html;
+ document.getElementById('os-subtotal').textContent='R$ '+o.total.toFixed(2);
+ document.getElementById('os-total').textContent='R$ '+o.total.toFixed(2);
+}
+function voltarOS(){document.getElementById('os-lista').style.display='block';document.getElementById('os-detalhe').style.display='none';osAtual=null;renderOS();}
+function alterarStatusOS(){
+ if(!osAtual)return;
+ let novo=document.getElementById('os-status').value;
+ osAtual.status=novo;
+ document.getElementById('os-badge').textContent=novo;
+ save();
+ alert('Status alterado para: '+novo);
+ renderOS();
+}
+function editarOS(){if(!osAtual)return alert('Use a aba Orçamentos para editar itens, depois aprove novamente');}
+function reabrirOS(){if(!osAtual)return;osAtual.status='Aberta';document.getElementById('os-status').value='Aberta';document.getElementById('os-badge').textContent='Aberta';save();alert('OS reaberta!');}
+function imprimirOS(){
+ if(!osAtual)return;
+ let cl=cli.find(c=>c.id==osAtual.clienteId);
+ let ve=vei.find(v=>v.id==osAtual.veiculoId);
+ let txt=`ORDEM DE SERVIÇO - DINATECH SOLUÇÕES AUTOMOTIVAS\nCNPJ: 67792840000105\n\n${osAtual.osNumero||'OS #'+osAtual.id} - Status: ${osAtual.status}\nCliente: ${cl?cl.nome:''}\nVeículo: ${ve?ve.placa+' '+(ve.modelo||'')+' '+ (ve.marca||''):''}\nData: ${new Date(osAtual.data).toLocaleDateString()}\n\nITENS:\n`;
+ (osAtual.itens||[]).forEach(it=>{txt+=`${it.nome} x${it.qtd} - R$ ${(it.venda*it.qtd+(it.mo||0)).toFixed(2)}\n`;});
+ txt+=`\nTotal: R$ ${osAtual.total.toFixed(2)}`;
+ let w=window.open('');w.document.write('<pre>'+txt+'</pre>');w.print();
+}
+function gerarRecibo(){
+ if(!osAtual)return;
+ let cl=cli.find(c=>c.id==osAtual.clienteId);
+ let txt=`RECIBO - DINATECH\n\nRecebemos de ${cl?cl.nome:''} o valor de R$ ${osAtual.total.toFixed(2)}\nReferente a ${osAtual.osNumero}\n\nData: ${new Date().toLocaleDateString()}\n\nAssinatura: ___________________`;
+ let w=window.open('');w.document.write('<pre>'+txt+'</pre>');w.print();
+}
+function whatsOS(){
+ if(!osAtual)return;
+ let cl=cli.find(c=>c.id==osAtual.clienteId);
+ let msg=`Olá ${cl?cl.nome:''}! Sua ${osAtual.osNumero||'OS'} está com status: *${osAtual.status}*\nTotal: R$ ${osAtual.total.toFixed(2)}\n\nDINATECH SOLUÇÕES AUTOMOTIVAS`;
+ let url='https://wa.me/?text='+encodeURIComponent(msg);
+ window.open(url,'_blank');
+}
+function gerarOrcOS(){
+ if(!osAtual)return;
+ orc.push({id:Date.now(),clienteId:osAtual.clienteId,veiculoId:osAtual.veiculoId,itens:osAtual.itens,total:osAtual.total,custo:osAtual.custo,lucro:osAtual.lucro});
+ save();
+ alert('Orçamento gerado a partir da OS!');
+ aba('orc');
+}
+function excluirOS(){
+ if(!osAtual)return;
+ if(confirm('Excluir esta OS? Essa ação não pode ser desfeita!')){
+   osl=osl.filter(o=>o.id!=osAtual.id);
+   save();
+   voltarOS();
+ }
+}
+
+function abrirCaixa(){let v=parseFloat(document.getElementById('caixa-ab-v').value);if(!v||v<=0)return alert('Valor');ab={valor:v,data:new Date().toISOString(),aberto:true};cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'abertura',desc:'Abertura',forma:'Dinheiro',valor:v});save();}
+function receberCaixa(){let d=document.getElementById('caixa-rec-d').value||'Recebimento',v=parseFloat(document.getElementById('caixa-rec-v').value),forma=document.getElementById('caixa-rec-forma').value;if(!v||v<=0)return alert('Valor');if(!ab||!ab.aberto)return alert('Abra o caixa!');cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'entrada',desc:d,forma:forma,valor:v,lucro:v});document.getElementById('caixa-rec-d').value='';document.getElementById('caixa-rec-v').value='';save();}
+function sangriaCaixa(){let v=parseFloat(document.getElementById('caixa-san-v').value),d=document.getElementById('caixa-san-d').value||'Sangria';if(!v||v<=0)return alert('Valor');if(!ab||!ab.aberto)return alert('Abra o caixa!');cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'sangria',desc:d,forma:'Dinheiro',valor:v});document.getElementById('caixa-san-v').value='';document.getElementById('caixa-san-d').value='';save();}
+function suprimentoCaixa(){let v=parseFloat(document.getElementById('caixa-sup-v').value),d=document.getElementById('caixa-sup-d').value||'Suprimento';if(!v||v<=0)return alert('Valor');if(!ab||!ab.aberto)return alert('Abra o caixa!');cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'suprimento',desc:d,forma:'Dinheiro',valor:v});document.getElementById('caixa-sup-v').value='';document.getElementById('caixa-sup-d').value='';save();}
 function renderCaixa(){
  let hoje=new Date().toDateString();
  let cxHoje=cx.filter(c=>{try{return new Date(c.data).toDateString()===hoje}catch(e){return true}});
  let abertura=cxHoje.filter(c=>c.tipo==='abertura').reduce((s,c)=>s+c.valor,0);
- let entradas=cxHoje.filter(c=>c.tipo==='entrada');
- let totalEnt=entradas.reduce((s,c)=>s+c.valor,0);
+ let totalEnt=cxHoje.filter(c=>c.tipo==='entrada').reduce((s,c)=>s+c.valor,0);
  let sangrias=cxHoje.filter(c=>c.tipo==='sangria').reduce((s,c)=>s+c.valor,0);
  let suprimentos=cxHoje.filter(c=>c.tipo==='suprimento').reduce((s,c)=>s+c.valor,0);
  let saldo=abertura+totalEnt+suprimentos-sangrias;
- let elSaldo=document.getElementById('cx-saldo');if(elSaldo)elSaldo.textContent='R$ '+saldo.toFixed(2);
- let elEnt=document.getElementById('cx-ent');if(elEnt)elEnt.textContent='R$ '+totalEnt.toFixed(2);
- let elStatus=document.getElementById('cx-status');if(elStatus)elStatus.textContent=ab&&ab.aberto?'✅ Aberto':'Fechado';
- let elFat=document.getElementById('d-fat');if(elFat)elFat.textContent='R$ '+totalEnt.toFixed(2);
- let elCaixa=document.getElementById('d-caixa');if(elCaixa)elCaixa.textContent=ab&&ab.aberto?'Aberto R$ '+saldo.toFixed(2):'Fechado';
- let elOs=document.getElementById('d-os');if(elOs)elOs.textContent=osl.length;
- let elLuc=document.getElementById('d-lucro');if(elLuc){let lucro=entradas.reduce((s,c)=>s+(c.lucro||0),0)-sangrias;elLuc.textContent='R$ '+lucro.toFixed(2);}
- let elEst=document.getElementById('d-est');if(elEst)elEst.innerHTML=pec.filter(p=>p.est<=2).map(p=>`<div>⚠️ ${p.nome} Est:${p.est} | Lucro R$${(p.venda-p.custo).toFixed(2)}</div>`).join('')||'✅ Estoque OK';
- let porForma={};entradas.forEach(c=>{let f=c.forma||'Dinheiro';porForma[f]=(porForma[f]||0)+c.valor;});
- let formaEl=document.getElementById('cx-por-forma');if(formaEl){formaEl.innerHTML=Object.keys(porForma).map(f=>`<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f5f5f5"><span>${f}</span><b>R$ ${porForma[f].toFixed(2)}</b></div>`).join('')||'<small style="color:#999">Nenhuma venda hoje</small>';}
- let tab=document.getElementById('tab-caixa');if(tab){tab.innerHTML=cxHoje.slice().reverse().map(c=>`<tr><td>${new Date(c.data).toLocaleTimeString()}</td><td><span style="padding:3px 8px;border-radius:10px;font-size:10px;background:${c.tipo==='entrada'?'#dcfce7':c.tipo==='abertura'?'#dbeafe':c.tipo==='sangria'?'#fee2e2':'#fef3c7'}">${c.tipo}</span></td><td>${c.desc}</td><td>${c.forma||'-'}</td><td style="font-weight:700">R$ ${c.valor.toFixed(2)}</td><td><button onclick="delCaixa('${c.id}')" style="border:none;background:none">🗑️</button></td></tr>`).join('')||'<tr><td colspan="6" style="text-align:center;color:#999">Nenhum lançamento hoje</td></tr>';}
+ let elS=document.getElementById('cx-saldo');if(elS)elS.textContent='R$ '+saldo.toFixed(2);
+ let elE=document.getElementById('cx-ent');if(elE)elE.textContent='R$ '+totalEnt.toFixed(2);
+ let elF=document.getElementById('d-fat');if(elF)elF.textContent='R$ '+totalEnt.toFixed(2);
+ let elC=document.getElementById('d-caixa');if(elC)elC.textContent=ab&&ab.aberto?'Aberto R$ '+saldo.toFixed(2):'Fechado';
+ let elL=document.getElementById('d-lucro');if(elL)elL.textContent='R$ '+(totalEnt-sangrias).toFixed(2);
+ let elO=document.getElementById('d-os');if(elO)elO.textContent=osl.length;
+ let tab=document.getElementById('tab-caixa');if(tab)tab.innerHTML=cxHoje.slice().reverse().map(c=>`<tr><td>${new Date(c.data).toLocaleTimeString()}</td><td>${c.tipo}</td><td>${c.desc}</td><td>${c.forma||'-'}</td><td>R$ ${c.valor.toFixed(2)}</td><td><button onclick="delCaixa('${c.id}')" style="border:none;background:none">🗑️</button></td></tr>`).join('')||'<tr><td colspan="6" style="text-align:center;color:#999">Nenhum hoje</td></tr>';
+ let elEst=document.getElementById('d-est');if(elEst)elEst.innerHTML=pec.filter(p=>p.est<=2).map(p=>`<div>⚠️ ${p.nome} Est:${p.est}</div>`).join('')||'✅ OK';
 }
-function delCaixa(id){if(confirm('Apagar lançamento?')){cx=cx.filter(c=>c.id!=id);save();}}
-function renderAll(){try{renderCli();renderVei();renderPec();renderOrc();renderOS();renderCaixa();}catch(e){console.log('render error',e);}}
+function delCaixa(id){if(confirm('Apagar?')){cx=cx.filter(c=>c.id!=id);save();}}
+function renderAll(){try{renderCli();renderVei();renderPec();renderOrc();renderOS();renderCaixa();}catch(e){console.log(e);}}
 init();
 </script></body></html>
