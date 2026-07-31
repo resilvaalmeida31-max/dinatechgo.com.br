@@ -1,226 +1,153 @@
 <!DOCTYPE html>
-<html lang="pt-br"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>DINATECH - Oficina</title>
+<html lang="pt-br"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>DINATECH - Sistema Completo</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}
-body{background:#f0f2f5;display:flex;min-height:100vh}
-#login{position:fixed;inset:0;background:linear-gradient(135deg,#1e1e2f,#2d2d44);display:flex;align-items:center;justify-content:center;z-index:9999}
-.box-login{background:#fff;padding:30px;border-radius:16px;width:95%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.sidebar{width:260px;background:#1e1e2f;color:#a0a0b0;position:fixed;left:0;top:0;bottom:0;overflow-y:auto;z-index:10;transition:.3s}
-.sidebar.logo{padding:20px;background:#181825;display:flex;align-items:center;gap:12px}
-.sidebar.logo div{background:#ff7a45;width:45px;height:45px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:18px}
-.sidebar h4{font-size:11px;color:#5a5a6a;padding:20px 20px 8px;text-transform:uppercase;letter-spacing:1px}
-.sidebar a{display:flex;align-items:center;gap:12px;padding:11px 20px;color:#a0a0b0;text-decoration:none;font-size:14px;cursor:pointer;border-left:3px solid transparent}
-.sidebar a:hover{background:#252536;color:#fff;border-left-color:#ff7a45}
-.sidebar a.ativo{background:#252536;color:#fff;border-left-color:#ff7a45}
-.sidebar.sub{padding-left:52px;font-size:13px;padding-top:6px;padding-bottom:6px;color:#7a7a8a}
-.main{margin-left:260px;flex:1;min-height:100vh}
-.topbar{background:#fff;padding:18px 28px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8ec;position:sticky;top:0;z-index:5}
-.btn{padding:10px 18px;border:none;border-radius:8px;font-weight:700;cursor:pointer}
-.btn-laranja{background:#ff6b35;color:#fff}
-.btn-verde{background:#22c55e;color:#fff}
-.card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.05);border:1px solid #eef0f4;margin-bottom:16px}
-.input{width:100%;padding:11px 14px;border:1px solid #dfe1e8;border-radius:8px;background:#fcfcfd;margin-top:6px;font-size:14px}
-.input:focus{outline:none;border-color:#ff7a45;background:#fff}
-label{font-size:12px;color:#555;font-weight:600;margin-top:12px;display:block}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media(max-width:900px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.grid2,.grid4{grid-template-columns:1fr}}
-table{width:100%;border-collapse:collapse}th{font-size:11px;color:#888;text-align:left;padding:12px;border-bottom:1px solid #eee}td{padding:12px;font-size:13px;border-bottom:1px solid #f5f5f5}
-.badge{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}body{background:#f0f2f5;display:flex;min-height:100vh}
+#login{position:fixed;inset:0;background:linear-gradient(135deg,#1e1e2f,#2d2d44);display:flex;align-items:center;justify-content:center;z-index:9999;padding:15px}
+.box{background:#fff;padding:24px;border-radius:16px;width:100%;max-width:420px;max-height:95vh;overflow-y:auto}
+.sidebar{width:270px;background:#1e1e2f;color:#a0a0b0;position:fixed;left:0;top:0;bottom:0;overflow-y:auto;z-index:20;transition:.3s}
+.logo{padding:18px;background:#181825;display:flex;align-items:center;gap:12px}
+.logo-icon{background:#ff7a45;width:45px;height:45px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900}
+.sidebar h4{font-size:10px;color:#5a5a6a;padding:16px 20px 6px;text-transform:uppercase}
+.sidebar a{display:flex;align-items:center;gap:10px;padding:10px 20px;color:#a0a0b0;text-decoration:none;font-size:13.5px;cursor:pointer;border-left:3px solid transparent}
+.sidebar a:hover,.sidebar a.ativo{background:#252536;color:#fff;border-left-color:#ff7a45}
+.sub{padding-left:52px;font-size:12.5px;color:#7a7a8a;padding-top:7px;padding-bottom:7px;display:block;cursor:pointer}
+.sub:hover{color:#fff;background:#252536}
+.main{margin-left:270px;flex:1;min-height:100vh;width:calc(100% - 270px)}
+.topbar{background:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8ec;position:sticky;top:0;z-index:10}
+.btn{padding:10px 16px;border:none;border-radius:8px;font-weight:700;cursor:pointer}
+.btn-laranja{background:#ff6b35;color:#fff}.btn-verde{background:#22c55e;color:#fff}.btn-cinza{background:#e5e7eb;color:#333}
+.card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.04);border:1px solid #eef0f4;margin-bottom:14px}
+.input{width:100%;padding:10px 12px;border:1px solid #dfe1e8;border-radius:8px;background:#fcfcfd;margin-top:6px;font-size:13px}
+label{font-size:11px;color:#555;font-weight:600;margin-top:10px;display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:900px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.main{margin-left:0;width:100%}.grid2{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse}th{font-size:10px;color:#888;text-align:left;padding:10px;border-bottom:1px solid #eee}td{padding:10px;font-size:13px;border-bottom:1px solid #f5f5f5}
 </style></head><body>
 
-<div id="login"><div class="box-login">
-<div id="cad-empresa" style="display:none">
-<h2 style="text-align:center;margin-bottom:20px">🏢 Cadastrar Empresa</h2>
-<label>Razão Social *</label><input id="emp-razao" class="input" value="DINATECH SOLUÇÕES AUTOMOTIVAS">
-<div class="grid2"><div><label>Nome Fantasia</label><input id="emp-fantasia" class="input" value="DINATECH"></div><div><label>CNPJ *</label><input id="emp-cnpj" class="input" placeholder="00.000.000/0001-00"></div></div>
-<div class="grid2"><div><label>Inscrição Estadual</label><input id="emp-ie" class="input"></div><div><label>Inscrição Municipal</label><input id="emp-im" class="input"></div></div>
-<label>Endereço</label><input id="emp-end" class="input" placeholder="Rua, número, cidade">
-<label>Logo da Empresa</label><input type="file" id="emp-logo" accept="image/*" class="input" onchange="previewLogo(this)">
-<img id="prev-logo" style="max-width:200px;margin-top:10px;border-radius:8px;display:none">
-<button class="btn btn-laranja" style="width:100%;margin-top:20px" onclick="salvarEmpresa()">💾 Salvar Configurações</button>
-</div>
-
-<div id="login-normal">
-<div style="text-align:center;margin-bottom:20px"><img id="logo-login" style="max-width:180px;border-radius:10px;display:none;margin:0 auto 10px"><div id="logo-fallback" style="background:#ff7a45;width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto;color:#fff;font-weight:900;font-size:24px">D</div><h2 style="margin-top:10px">DINATECH</h2><small style="color:#888">Sistema de Gestão</small></div>
+<div id="login"><div class="box">
+<div id="login-area">
+<div style="text-align:center;margin-bottom:16px"><img id="logo-login" style="max-width:160px;display:none;margin:0 auto 8px;border-radius:8px"><div style="background:#ff7a45;width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto;color:#fff;font-weight:900;font-size:22px" id="logo-fb">D</div><h3 style="margin-top:8px">DINATECH</h3><small style="color:#888">Sistema de Gestão</small></div>
 <label>Email</label><input id="email" class="input" value="resilvaalmeida31@gmail.com">
-<label>Senha</label><input id="senha" type="password" class="input" placeholder="••••••••">
-<button class="btn btn-laranja" style="width:100%;margin-top:20px;padding:14px" onclick="entrar()">ENTRAR NO SISTEMA</button>
-<p id="erro" style="color:#ef4444;font-size:12px;display:none;margin-top:10px;text-align:center"></p>
-<button onclick="resetar()" style="background:none;border:none;color:#999;font-size:11px;width:100%;margin-top:15px">Resetar login</button>
-<button onclick="showCad()" style="background:none;border:none;color:#bbb;font-size:11px;width:100%;margin-top:8px">⚙️ Configurar empresa e logo</button>
+<label>Senha</label><input id="senha" type="password" class="input" value="dina2026">
+<button class="btn btn-laranja" style="width:100%;margin-top:14px;padding:13px" onclick="entrar()">ENTRAR NO SISTEMA</button>
+<p id="erro" style="color:#ef4444;font-size:11px;display:none;margin-top:8px;text-align:center"></p>
+</div>
+<div id="emp-area" style="display:none">
+<h3>🏢 Configurar Empresa</h3>
+<label>Razão Social *</label><input id="emp-razao" class="input" value="DINATECH SOLUÇÕES AUTOMOTIVAS">
+<div class="grid2"><div><label>Nome Fantasia</label><input id="emp-fant" class="input" value="DINATECH"></div><div><label>CNPJ *</label><input id="emp-cnpj" class="input" value="67792840000105"></div></div>
+<label>Logo</label><input type="file" class="input" accept="image/*" onchange="upLogo(this)">
+<img id="prev-logo" style="max-width:180px;margin-top:8px;display:none;border-radius:8px">
+<button class="btn btn-laranja" style="width:100%;margin-top:12px" onclick="salvarEmpresa()">💾 Salvar e Entrar</button>
+<button onclick="voltarLogin()" style="background:none;border:none;color:#888;font-size:11px;width:100%;margin-top:8px">Voltar</button>
 </div>
 </div></div>
 
 <div class="sidebar" id="sidebar">
-<div class="logo"><div id="logo-side">D</div><div><b style="color:#fff">Oficina</b><br><small>Sistema de Gestão</small></div></div>
+<div class="logo"><div class="logo-icon" id="logo-side">D</div><div><b style="color:#fff">Oficina</b><br><small>Sistema de Gestão</small></div></div>
 <h4>Principal</h4>
-<a onclick="aba('dash')" id="m-dash" class="ativo">📊 Dashboards</a>
-<a onclick="aba('venda')">🛒 Venda <span style="margin-left:auto">›</span></a>
-<a onclick="aba('os')">🔧 Ordem de Serviço <span style="margin-left:auto">›</span></a>
-<div id="sub-os" style="display:block">
+<a onclick="aba('dash')" id="m-dash" class="ativo">📊 Dashboard</a>
+<a onclick="aba('venda')">🛒 Venda</a>
+<a onclick="aba('os')">🔧 Ordem de Serviço</a>
 <a class="sub" onclick="aba('os')">Consultar O.S.</a>
-<a class="sub" onclick="aba('os')">Agendamentos</a>
-</div>
-<a onclick="aba('orc')">📋 Orçamento <span style="margin-left:auto">›</span></a>
-<a onclick="aba('clientes')">👥 Cadastros Diversos <span style="margin-left:auto">›</span></a>
-<a onclick="toggleSub('sub-vei')">🚗 Veículos <span style="margin-left:auto">▼</span></a>
-<div id="sub-vei" style="display:block">
-<a class="sub ativo" onclick="aba('veiculos')">Cadastro de Veículos</a>
-<a class="sub" onclick="alert('Em breve')">Cor</a>
-<a class="sub" onclick="alert('Em breve')">Tipos</a>
-<a class="sub" onclick="alert('Em breve')">Marcas</a>
-<a class="sub" onclick="alert('Em breve')">Modelos</a>
-<a class="sub" onclick="alert('Em breve')">Categorias</a>
-<a class="sub" onclick="alert('Em breve')">Combustíveis</a>
-</div>
+<a onclick="aba('orc')">📋 Orçamento</a>
+<a onclick="aba('clientes')">👥 Clientes</a>
+<a onclick="aba('veiculos')">🚗 Veículos</a>
 <h4>Financeiro</h4>
-<a onclick="toggleSub('sub-caixa')">💳 Caixa <span style="margin-left:auto">▼</span></a>
-<div id="sub-caixa" style="display:block">
-<a class="sub" onclick="aba('caixa')">Abertura de Caixa</a>
-<a class="sub" onclick="aba('caixa')">Recebimento Venda/O.S</a>
-<a class="sub" onclick="aba('caixa')">Sangria Caixa</a>
-<a class="sub" onclick="aba('caixa')">Suprimento Caixa</a>
-<a class="sub" onclick="aba('caixa')">Relatórios</a>
-</div>
-<a onclick="toggleSub('sub-fin')">💰 Financeiro <span style="margin-left:auto">›</span></a>
-<div id="sub-fin" style="display:none">
-<a class="sub" onclick="alert('Em breve')">Pagar</a>
-<a class="sub" onclick="alert('Em breve')">Receber</a>
-<a class="sub" onclick="alert('Em breve')">Caixas e Bancos</a>
-<a class="sub" onclick="alert('Em breve')">Consultar PIX</a>
-<a class="sub" onclick="alert('Em breve')">Consultar Boletos Online</a>
-</div>
-<a onclick="toggleSub('sub-cad')">📁 Cadastros <span style="margin-left:auto">›</span></a>
-<div id="sub-cad" style="display:none">
-<a class="sub" onclick="aba('pecas')">Formas de Pagamento</a>
-<a class="sub" onclick="aba('pecas')">Peças / Produtos</a>
-<a class="sub">Contas</a>
-<a class="sub">Plano de Contas</a>
-<a class="sub">Instituições Financeiras</a>
-</div>
-<a>📦 Pedidos <span style="margin-left:auto">›</span></a>
-<a>🚚 Entrada de Mercadoria <span style="margin-left:auto">›</span></a>
-<a onclick="aba('config')" style="margin-top:20px">⚙️ Configurações</a>
-<div style="padding:20px;margin-top:20px;border-top:1px solid #2a2a3a"><small style="color:#5a5a6a">EMPRESA / USUÁRIO</small><div style="color:#fff;font-size:13px;margin-top:6px" id="side-empresa">1 - OFICINA COMPANY</div><small id="side-email" style="color:#666">resilvaalmeida31@gmail.com</small><br><a onclick="sair()" style="padding:10px 0;margin-top:10px;display:flex">🚪 Sair</a></div>
+<a onclick="aba('caixa')">💳 Caixa</a>
+<a class="sub" onclick="aba('caixa')">Abertura</a>
+<a class="sub" onclick="aba('caixa')">Recebimento</a>
+<a class="sub" onclick="aba('caixa')">Sangria</a>
+<a class="sub" onclick="aba('caixa')">Suprimento</a>
+<h4>Cadastros</h4>
+<a onclick="aba('formas')" id="m-formas">📁 Formas de Pagamento</a>
+<a onclick="aba('pecas')" id="m-pecas">📦 Peças / Produtos</a>
+<a onclick="aba('contas')" id="m-contas">🏦 Contas</a>
+<a onclick="aba('plano')" id="m-plano">📊 Plano de Contas</a>
+<a onclick="aba('bancos')" id="m-bancos">🏛️ Instituições Financeiras</a>
+<a onclick="aba('pedidos')" id="m-pedidos">📦 Pedidos</a>
+<a onclick="aba('entrada')" id="m-entrada" class="ativo" style="background:#2a1f1a;color:#ff7a45">🚚 Entrada de Mercadoria</a>
+<a onclick="aba('config')">⚙️ Configurações</a>
+<div style="padding:14px;margin-top:10px;border-top:1px solid #2a2a3a"><small style="color:#5a5a6a">EMPRESA</small><div style="color:#fff;font-size:11px;margin-top:4px" id="side-emp">DINATECH</div><small id="side-email" style="color:#666"></small><br><a onclick="sair()" style="color:#ef4444;padding:8px 0;display:flex">🚪 Sair</a></div>
 </div>
 
 <div class="main">
-<div class="topbar"><div><h2 id="titulo-pagina" style="font-size:20px">⚙️ Configurações</h2><small style="color:#888">Configure os parâmetros gerais do sistema</small></div><div><button class="btn btn-laranja" onclick="salvarEmpresa()">💾 Salvar Configurações</button> <button onclick="toggleSidebar()" style="display:none" id="btn-menu" class="btn">☰</button></div></div>
-<div style="padding:20px">
-
-<!-- CONFIG -->
-<div id="sec-config" class="secao">
-<div style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05)">
-<div style="display:flex;gap:20px;padding:16px 20px;border-bottom:1px solid #eee;overflow-x:auto">
-<span style="background:#f0f2f5;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:700">🏢 Empresa</span><span style="padding:8px 14px;font-size:12px;color:#999">🛒 Vendas</span><span style="padding:8px 14px;font-size:12px;color:#999">🔧 Ordem de Serviço</span><span style="padding:8px 14px;font-size:12px;color:#999">💰 Financeiro</span><span style="padding:8px 14px;font-size:12px;color:#999">📄 Fiscal</span>
-</div>
-<div style="padding:24px">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><div style="background:#fff3ed;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center">🏢</div><div><b>Empresa</b><br><small style="color:#888">Dados gerais da empresa licenciada</small></div></div>
-<div class="grid2"><div><label>Razão Social *</label><input id="c-razao" class="input" value="OFICINA COMPANY"></div><div><label>Nome Fantasia</label><input id="c-fantasia" class="input" value="OFICINA COMPANY"></div></div>
-<div class="grid2"><div><label>CNPJ *</label><input id="c-cnpj" class="input" value="102.762.320-46"></div><div><label>Inscrição Estadual</label><input class="input" placeholder="Isento"></div></div>
-<div class="grid2"><div><label>Inscrição Municipal</label><input class="input"></div><div><label>Endereço</label><input id="c-end" class="input" placeholder="Rua, número, bairro, cidade"></div></div>
-<div class="grid2"><div><label>Telefone</label><input id="c-tel" class="input"></div><div><label>Logo</label><input type="file" class="input" accept="image/*" onchange="previewLogo(this)"></div></div>
-<img id="logo-config" style="max-width:250px;margin-top:15px;border-radius:10px;display:none">
-</div>
-</div>
-</div>
+<div class="topbar"><div style="display:flex;align-items:center;gap:10px"><button id="btn-menu" onclick="document.getElementById('sidebar').classList.toggle('open')" style="display:none;background:#1e1e2f;color:#fff;border:none;padding:8px 12px;border-radius:8px">☰</button><div><h2 id="tit" style="font-size:17px">🚚 Entrada de Mercadoria</h2><small style="color:#888" id="subtit">Lançamento de compras e estoque</small></div></div><button class="btn btn-laranja" onclick="aba('config')">💾 Salvar Configurações</button></div>
+<div style="padding:14px">
 
 <!-- DASH -->
-<div id="sec-dash" class="secao" style="display:none">
-<div class="grid4"><div class="card" style="border-left:4px solid #ff7a45"><small>FATURAMENTO</small><h2 id="d-fat">R$ 0</h2></div><div class="card" style="border-left:4px solid #22c55e"><small>LUCRO BRUTO</small><h2 id="d-lucro" style="color:#22c55e">R$ 0</h2></div><div class="card" style="border-left:4px solid #3b82f6"><small>CAIXA</small><h2 id="d-caixa">Fechado</h2></div><div class="card" style="border-left:4px solid #a855f7"><small>O.S. ABERTAS</small><h2 id="d-os">0</h2></div></div>
-<div class="card"><b>📦 Peças com estoque baixo - com margem</b><div id="d-est" style="margin-top:10px"></div></div>
-</div>
+<div id="sec-dash" class="secao" style="display:none"><div class="grid2"><div class="card"><small>FATURAMENTO</small><h2 id="d-fat">R$ 0</h2></div><div class="card"><small>LUCRO</small><h2 id="d-luc" style="color:#22c55e">R$ 0</h2></div></div><div class="card"><b>Estoque baixo</b><div id="d-est" style="margin-top:8px;font-size:12px"></div></div></div>
 
 <!-- CLIENTES -->
-<div id="sec-clientes" class="secao" style="display:none">
-<div class="card"><h3>👥 Clientes</h3><input type="hidden" id="cli-id"><div class="grid2"><div><label>Nome *</label><input id="cli-nome" class="input"></div><div><label>CPF/CNPJ</label><input id="cli-cpf" class="input"></div></div><div class="grid2"><div><label>Telefone</label><input id="cli-tel" class="input"></div><div><label>Endereço</label><input id="cli-end" class="input"></div></div><button class="btn btn-laranja" style="margin-top:15px" onclick="salvarCli()">Salvar Cliente</button></div>
-<div class="card"><table><thead><tr><th>Nome</th><th>Tel</th><th>Ações</th></tr></thead><tbody id="tab-cli"></tbody></table></div>
-</div>
+<div id="sec-clientes" class="secao" style="display:none"><div class="card"><h3>👥 Clientes</h3><input type="hidden" id="cli-id"><div class="grid2"><div><label>Nome *</label><input id="cli-nome" class="input"></div><div><label>CPF/CNPJ</label><input id="cli-cpf" class="input"></div></div><div class="grid2"><div><label>Tel</label><input id="cli-tel" class="input"></div><div><label>End</label><input id="cli-end" class="input"></div></div><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="salvarCli()">Salvar</button></div><div class="card"><table><tbody id="tab-cli"></tbody></table></div></div>
 
 <!-- VEICULOS -->
-<div id="sec-veiculos" class="secao" style="display:none">
-<div class="card"><h3>🚗 Cadastro de Veículos</h3><input type="hidden" id="vei-id"><label>Cliente *</label><select id="vei-cli" class="input"></select><div class="grid2"><div><label>Placa *</label><input id="vei-placa" class="input" style="text-transform:uppercase"></div><div><label>Marca</label><input id="vei-marca" class="input"></div></div><div class="grid2"><div><label>Modelo</label><input id="vei-modelo" class="input"></div><div><label>Ano</label><input id="vei-ano" type="number" class="input"></div></div><div class="grid2"><div><label>KM</label><input id="vei-km" type="number" class="input"></div><div><label>Cor</label><input id="vei-cor" class="input"></div></div><button class="btn btn-laranja" style="margin-top:15px" onclick="salvarVei()">Salvar Veículo</button></div>
-<div class="card"><table><tbody id="tab-vei"></tbody></table></div>
-</div>
+<div id="sec-veiculos" class="secao" style="display:none"><div class="card"><h3>🚗 Veículos</h3><input type="hidden" id="vei-id"><label>Cliente *</label><select id="vei-cli" class="input"></select><div class="grid2"><div><label>Placa *</label><input id="vei-placa" class="input" style="text-transform:uppercase"></div><div><label>Modelo</label><input id="vei-modelo" class="input"></div></div><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="salvarVei()">Salvar</button></div><div class="card"><table><tbody id="tab-vei"></tbody></table></div></div>
 
 <!-- PECAS -->
-<div id="sec-pecas" class="secao" style="display:none">
-<div class="card"><h3>📦 Peças - com Margem de Lucro visível</h3><input type="hidden" id="pec-id"><label>Nome Peça</label><input id="pec-nome" class="input"><div class="grid2"><div><label>Custo R$</label><input id="pec-custo" type="number" class="input" oninput="calc()"></div><div><label>Margem %</label><input id="pec-marg" type="number" class="input" value="60" oninput="calc()"></div></div><div class="grid2"><div><label>Venda R$</label><input id="pec-venda" type="number" class="input" oninput="calc2()"></div><div><label>Estoque</label><input id="pec-est" type="number" class="input"></div></div><div style="background:#f0fdf4;padding:12px;border-radius:8px;margin-top:12px;border-left:4px solid #22c55e">Lucro: <b id="pec-lucro" style="color:#22c55e;font-size:18px">R$ 0,00</b> <small style="color:#666"> - aparece no orçamento</small></div><button class="btn btn-laranja" style="margin-top:15px" onclick="salvarPec()">Salvar Peça</button></div>
-<div class="card"><table><thead><tr><th>Peça</th><th style="color:#22c55e">Lucro</th><th>Est</th><th></th></tr></thead><tbody id="tab-pec"></tbody></table></div>
+<div id="sec-pecas" class="secao" style="display:none"><div class="card"><h3>📦 Peças com margem</h3><input type="hidden" id="pec-id"><label>Nome</label><input id="pec-nome" class="input"><div class="grid2"><div><label>Custo</label><input id="pec-custo" type="number" class="input" oninput="calc()"></div><div><label>Margem %</label><input id="pec-marg" type="number" class="input" value="60" oninput="calc()"></div></div><div class="grid2"><div><label>Venda</label><input id="pec-venda" type="number" class="input" oninput="calc2()"></div><div><label>Est</label><input id="pec-est" type="number" class="input"></div></div><div style="background:#f0fdf4;padding:8px;border-radius:8px;margin-top:8px;border-left:3px solid #22c55e">Lucro: <b id="pec-lucro" style="color:#22c55e">R$ 0,00</b></div><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="salvarPec()">Salvar Peça</button></div><div class="card"><table><tbody id="tab-pec"></tbody></table></div></div>
+
+<!-- FORMAS -->
+<div id="sec-formas" class="secao" style="display:none"><div class="card"><h3>💳 Formas de Pagamento</h3><input type="hidden" id="forma-id"><div class="grid2"><div><label>Nome *</label><input id="forma-nome" class="input" placeholder="Ex: PIX, Dinheiro, Cartão Crédito"></div><div><label>Taxa %</label><input id="forma-taxa" type="number" class="input" value="0"></div></div><label>Tipo</label><select id="forma-tipo" class="input"><option>À Vista</option><option>Parcelado</option><option>PIX</option><option>Cartão</option></select><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="salvarForma()">Salvar Forma</button></div><div class="card"><table><thead><tr><th>Forma</th><th>Taxa</th><th>Tipo</th><th></th></tr></thead><tbody id="tab-formas"></tbody></table></div></div>
+
+<!-- CONTAS -->
+<div id="sec-contas" class="secao" style="display:none"><div class="card"><h3>🏦 Contas</h3><input type="hidden" id="conta-id"><div class="grid2"><div><label>Nome Conta *</label><input id="conta-nome" class="input" placeholder="Caixa, Banco Brasil, etc"></div><div><label>Saldo Inicial R$</label><input id="conta-saldo" type="number" class="input" value="0"></div></div><label>Banco</label><select id="conta-banco" class="input"></select><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="salvarConta()">Salvar Conta</button></div><div class="card"><table><thead><tr><th>Conta</th><th>Saldo</th><th></th></tr></thead><tbody id="tab-contas"></tbody></table></div></div>
+
+<!-- PLANO -->
+<div id="sec-plano" class="secao" style="display:none"><div class="card"><h3>📊 Plano de Contas</h3><input type="hidden" id="plano-id"><div class="grid2"><div><label>Código</label><input id="plano-cod" class="input" placeholder="1.01"></div><div><label>Nome *</label><input id="plano-nome" class="input" placeholder="Venda de Peças"></div></div><label>Tipo</label><select id="plano-tipo" class="input"><option>Receita</option><option>Despesa</option><option>Custo</option></select><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="salvarPlano()">Salvar</button></div><div class="card"><table><thead><tr><th>Código</th><th>Nome</th><th>Tipo</th><th></th></tr></thead><tbody id="tab-plano"></tbody></table></div></div>
+
+<!-- BANCOS -->
+<div id="sec-bancos" class="secao" style="display:none"><div class="card"><h3>🏛️ Instituições Financeiras</h3><input type="hidden" id="banco-id"><div class="grid2"><div><label>Nome Banco *</label><input id="banco-nome" class="input" placeholder="Banco do Brasil"></div><div><label>Código</label><input id="banco-cod" class="input" placeholder="001"></div></div><label>Agência / Conta</label><input id="banco-ag" class="input" placeholder="Ag 1234 Conta 56789-0"><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="salvarBanco()">Salvar Banco</button></div><div class="card"><table><thead><tr><th>Banco</th><th>Código</th><th></th></tr></thead><tbody id="tab-bancos"></tbody></table></div></div>
+
+<!-- PEDIDOS -->
+<div id="sec-pedidos" class="secao" style="display:none"><div class="card"><h3>📦 Pedidos</h3><input type="hidden" id="ped-id"><label>Fornecedor</label><input id="ped-forn" class="input" placeholder="Nome do fornecedor"><label>Peça</label><select id="ped-peca" class="input"></select><div class="grid2"><div><label>Qtd</label><input id="ped-qtd" type="number" class="input" value="1"></div><div><label>Valor Total R$</label><input id="ped-valor" type="number" class="input"></div></div><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="salvarPedido()">Salvar Pedido</button></div><div class="card"><table><thead><tr><th>Fornecedor</th><th>Peça</th><th>Qtd</th><th>Valor</th><th></th></tr></thead><tbody id="tab-pedidos"></tbody></table></div></div>
+
+<!-- ENTRADA MERCADORIA - FUNCIONANDO -->
+<div id="sec-entrada" class="secao">
+<div class="card" style="border-left:4px solid #ff7a45"><h3>🚚 Entrada de Mercadoria - FUNCIONANDO</h3><small style="color:#666">Ao lançar, aumenta estoque e lança saída no caixa</small>
+<input type="hidden" id="ent-id">
+<div class="grid2"><div><label>Fornecedor *</label><input id="ent-forn" class="input" placeholder="Ex: Distribuidora Goiania"></div><div><label>Nota Fiscal</label><input id="ent-nf" class="input" placeholder="Nº NF-e"></div></div>
+<div class="grid2"><div><label>Peça / Produto *</label><select id="ent-peca" class="input"></select></div><div><label>Ou Nova Peça</label><input id="ent-nova" class="input" placeholder="Digite se for peça nova"></div></div>
+<div class="grid2"><div><label>Qtd *</label><input id="ent-qtd" type="number" class="input" value="1" oninput="calcEnt()"></div><div><label>Custo Unit R$ *</label><input id="ent-custo" type="number" class="input" oninput="calcEnt()"></div></div>
+<div class="grid2"><div><label>Venda Unit R$ (margem)</label><input id="ent-venda" type="number" class="input" oninput="calcEnt2()"></div><div><label>Margem %</label><input id="ent-marg" type="number" class="input" value="60" oninput="calcEnt()"></div></div>
+<div style="background:#fff7ed;padding:10px;border-radius:8px;margin-top:10px;border-left:3px solid #ff7a45">
+Total Compra: <b id="ent-total" style="font-size:16px">R$ 0,00</b> | Lucro Previsto: <b id="ent-lucro" style="color:#22c55e">R$ 0,00</b>
+</div>
+<div class="grid2" style="margin-top:10px"><div><label>Forma Pagto</label><select id="ent-forma" class="input"></select></div><div><label>Conta</label><select id="ent-conta" class="input"></select></div></div>
+<button class="btn btn-laranja" style="width:100%;margin-top:12px;padding:13px" onclick="salvarEntrada()">📥 LANÇAR ENTRADA + ATUALIZAR ESTOQUE</button>
+</div>
+<div class="card"><h4>Histórico Entradas</h4><table><thead><tr><th>Data</th><th>Fornecedor</th><th>Peça</th><th>Qtd</th><th>Total</th><th></th></tr></thead><tbody id="tab-entradas"></tbody></table></div>
 </div>
 
-<!-- ORC -->
-<div id="sec-orc" class="secao" style="display:none"><div class="card"><h3>📝 Orçamentos com Margem</h3><label>Cliente</label><select id="orc-cli" class="input" onchange="filtraVei('orc')"></select><label>Veículo</label><select id="orc-vei" class="input"></select><div class="grid2"><div><label>Peça (mostra lucro)</label><select id="orc-pec" class="input"></select></div><div><label>Qtd</label><input id="orc-qtd" type="number" value="1" class="input"></div></div><div class="grid2"><div><label>Mão de Obra R$</label><input id="orc-mo" type="number" value="0" class="input"></div><div><label>&nbsp;</label><button class="btn btn-laranja" style="width:100%" onclick="addOrc()">+ Adicionar</button></div></div><div id="orc-itens" style="margin-top:15px"></div><div id="orc-total" style="background:#f8f9fb;padding:12px;border-radius:8px;margin-top:10px;font-weight:bold"></div><button class="btn btn-verde" style="width:100%;margin-top:10px" onclick="salvarOrc()">Salvar Orçamento</button></div><div class="card"><div id="lista-orc"></div></div></div>
+<!-- ORC, OS, CAIXA, CONFIG -->
+<div id="sec-orc" class="secao" style="display:none"><div class="card"><h3>📝 Orçamento</h3><label>Cliente</label><select id="orc-cli" class="input" onchange="filtraVei('orc')"></select><label>Veículo</label><select id="orc-vei" class="input"></select><label>Peça</label><select id="orc-pec" class="input"></select><div class="grid2"><div><label>Qtd</label><input id="orc-qtd" type="number" value="1" class="input"></div><div><label>M.O.</label><input id="orc-mo" type="number" value="0" class="input"></div></div><button class="btn btn-laranja" style="width:100%;margin-top:8px" onclick="addOrc()">+ Add</button><div id="orc-itens" style="margin-top:10px"></div><div id="orc-total" style="background:#f8f9fb;padding:8px;border-radius:8px;margin-top:8px;font-weight:bold"></div><button class="btn btn-verde" style="width:100%;margin-top:8px" onclick="salvarOrc()">Salvar Orçamento</button></div><div class="card"><div id="lista-orc"></div></div></div>
 
-<!-- OS -->
-<div id="sec-os" class="secao" style="display:none"><div class="card"><h3>🔧 Ordem de Serviço</h3><div id="os-itens"></div><div id="os-total" style="background:#f8f9fb;padding:12px;border-radius:8px;margin-top:10px"></div></div><div class="card"><div id="lista-os"></div></div></div>
+<div id="sec-os" class="secao" style="display:none"><div class="card"><div id="lista-os"></div></div></div>
 
-<!-- CAIXA -->
-<div id="sec-caixa" class="secao" style="display:none">
-<div class="grid4"><div class="card"><small>SALDO</small><h2 id="cx-saldo">R$ 0</h2></div><div class="card"><small>ENTRADAS</small><h2 id="cx-ent" style="color:#22c55e">R$ 0</h2></div><div class="card"><small>SAÍDAS</small><h2 id="cx-sai" style="color:#ef4444">R$ 0</h2></div><div class="card"><small>LUCRO</small><h2 id="cx-luc" style="color:#3b82f6">R$ 0</h2></div></div>
-<div class="grid2"><div class="card"><b>🔓 Abertura de Caixa</b><input id="caixa-ab-v" type="number" class="input" placeholder="Valor R$"><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="abrirCaixa()">Abrir Caixa</button><div id="caixa-status" style="font-size:11px;margin-top:8px"></div></div><div class="card"><b>💵 Recebimento Venda/O.S</b><input id="caixa-rec-d" class="input" placeholder="Descrição"><input id="caixa-rec-v" type="number" class="input" placeholder="Valor"><button class="btn btn-verde" style="width:100%;margin-top:10px" onclick="receberCaixa()">Receber</button></div></div>
-<div class="grid2"><div class="card"><b>📤 Sangria Caixa</b><input id="caixa-san-v" type="number" class="input" placeholder="Valor"><input id="caixa-san-d" class="input" placeholder="Motivo"><button class="btn" style="background:#ef4444;color:#fff;width:100%;margin-top:10px" onclick="sangriaCaixa()">Sangria</button></div><div class="card"><b>📥 Suprimento Caixa</b><input id="caixa-sup-v" type="number" class="input" placeholder="Valor"><input id="caixa-sup-d" class="input" placeholder="Origem"><button class="btn" style="background:#8b5cf6;color:#fff;width:100%;margin-top:10px" onclick="suprimentoCaixa()">Suprir</button></div></div>
-<div class="card"><table><thead><tr><th>Data</th><th>Tipo</th><th>Descrição</th><th>Valor</th><th></th></tr></thead><tbody id="tab-caixa"></tbody></table></div>
-</div>
+<div id="sec-caixa" class="secao" style="display:none"><div class="grid2"><div class="card"><small>SALDO</small><h2 id="cx-saldo">R$ 0</h2></div><div class="card"><small>ENTRADAS</small><h2 id="cx-ent" style="color:#22c55e">R$ 0</h2></div></div><div class="grid2"><div class="card"><b>🔓 Abertura</b><input id="caixa-ab-v" type="number" class="input" placeholder="Valor"><button class="btn btn-laranja" style="width:100%;margin-top:6px" onclick="abrirCaixa()">Abrir</button><div id="caixa-status" style="font-size:11px;margin-top:4px"></div></div><div class="card"><b>💵 Recebimento</b><input id="caixa-rec-d" class="input" placeholder="Desc"><input id="caixa-rec-v" type="number" class="input" placeholder="Valor"><button class="btn btn-verde" style="width:100%;margin-top:6px" onclick="receberCaixa()">Receber</button></div></div><div class="card"><table><tbody id="tab-caixa"></tbody></table></div></div>
+
+<div id="sec-config" class="secao" style="display:none"><div class="card"><h3>🏢 Empresa</h3><div class="grid2"><div><label>Razão Social *</label><input id="c-razao" class="input" value="DINATECH SOLUÇÕES AUTOMOTIVAS"></div><div><label>Nome Fantasia</label><input id="c-fantasia" class="input" value="DINATECH"></div></div><div class="grid2"><div><label>CNPJ *</label><input id="c-cnpj" class="input" value="67792840000105"></div><div><label>Inscrição Estadual</label><input id="c-ie" class="input" value="Isento"></div></div><label>Endereço</label><input id="c-end" class="input"><button class="btn btn-laranja" style="width:100%;margin-top:10px" onclick="salvarEmpresa2()">💾 Salvar Configurações</button></div></div>
+
+<div id="sec-venda" class="secao" style="display:none"><div class="card"><h3>🛒 Venda</h3><p style="color:#666;font-size:13px">Use o Caixa > Recebimento para lançar vendas avulsas ou aprove Orçamentos que viram OS e entram no caixa automaticamente com lucro.</p></div></div>
 
 </div>
 </div>
 
 <script>
-let emp=JSON.parse(localStorage.getItem('dtg_emp')||'null'),cli=JSON.parse(localStorage.getItem('dtg_cli')||'[]'),vei=JSON.parse(localStorage.getItem('dtg_vei')||'[]'),pec=JSON.parse(localStorage.getItem('dtg_pecas')||'[]'),orc=JSON.parse(localStorage.getItem('dtg_orc')||'[]'),osl=JSON.parse(localStorage.getItem('dtg_os')||'[]'),cx=JSON.parse(localStorage.getItem('dtg_caixa')||'[]'),ab=JSON.parse(localStorage.getItem('dtg_ab')||'null'),logoB64=localStorage.getItem('dtg_logo')||'',itO=[];
+let emp=JSON.parse(localStorage.getItem('dtg_emp')||'null'),cli=JSON.parse(localStorage.getItem('dtg_cli')||'[]'),vei=JSON.parse(localStorage.getItem('dtg_vei')||'[]'),pec=JSON.parse(localStorage.getItem('dtg_pecas')||'[]'),orc=JSON.parse(localStorage.getItem('dtg_orc')||'[]'),osl=JSON.parse(localStorage.getItem('dtg_os')||'[]'),cx=JSON.parse(localStorage.getItem('dtg_caixa')||'[]'),ab=JSON.parse(localStorage.getItem('dtg_ab')||'null'),logoB64=localStorage.getItem('dtg_logo')||'';
+let formas=JSON.parse(localStorage.getItem('dtg_formas')||'[{"id":"1","nome":"Dinheiro","taxa":0,"tipo":"À Vista"},{"id":"2","nome":"PIX","taxa":0,"tipo":"PIX"},{"id":"3","nome":"Cartão Crédito","taxa":3,"tipo":"Cartão"},{"id":"4","nome":"Cartão Débito","taxa":1.5,"tipo":"Cartão"}]'),contas=JSON.parse(localStorage.getItem('dtg_contas')||'[{"id":"1","nome":"Caixa","saldo":0}]'),planos=JSON.parse(localStorage.getItem('dtg_planos')||'[]'),bancos=JSON.parse(localStorage.getItem('dtg_bancos')||'[]'),pedidos=JSON.parse(localStorage.getItem('dtg_pedidos')||'[]'),entradas=JSON.parse(localStorage.getItem('dtg_entradas')||'[]'),itO=[];
+
 function init(){
- if(logoB64){document.getElementById('logo-login').src=logoB64;document.getElementById('logo-login').style.display='block';document.getElementById('logo-fallback').style.display='none';document.getElementById('logo-config').src=logoB64;document.getElementById('logo-config').style.display='block';document.getElementById('logo-side').innerHTML=`<img src="${logoB64}" style="width:100%;height:100%;object-fit:cover;border-radius:12px">`}
- if(emp){document.getElementById('c-razao').value=emp.razao||emp.nome||'OFICINA COMPANY';document.getElementById('c-fantasia').value=emp.fantasia||'';document.getElementById('c-cnpj').value=emp.cnpj||'';document.getElementById('c-end').value=emp.end||'';document.getElementById('side-empresa').textContent='1 - '+(emp.razao||emp.nome);document.getElementById('emp-razao').value=emp.razao||emp.nome;document.getElementById('emp-cnpj').value=emp.cnpj||''}
- else {document.getElementById('cad-empresa').style.display='block';document.getElementById('login-normal').style.display='none'}
+ if(!emp){emp={razao:'DINATECH SOLUÇÕES AUTOMOTIVAS',fantasia:'DINATECH',cnpj:'67792840000105',ie:'Isento',nome:'DINATECH SOLUÇÕES AUTOMOTIVAS'};localStorage.setItem('dtg_emp',JSON.stringify(emp))}
+ if(logoB64){document.getElementById('logo-login').src=logoB64;document.getElementById('logo-login').style.display='block';document.getElementById('logo-fb').style.display='none';document.getElementById('logo-side').innerHTML=`<img src="${logoB64}" style="width:100%;height:100%;object-fit:cover;border-radius:12px">`}
+ document.getElementById('c-razao').value=emp.razao||emp.nome;document.getElementById('c-fantasia').value=emp.fantasia||'';document.getElementById('c-cnpj').value=emp.cnpj||'67792840000105';document.getElementById('side-emp').textContent=emp.razao||emp.nome;
  if(localStorage.getItem('logado')==='sim'){document.getElementById('login').style.display='none';document.getElementById('side-email').textContent=localStorage.getItem('email_logado')||''}
+ if(window.innerWidth<=900)document.getElementById('btn-menu').style.display='block';
  renderAll();
 }
-function previewLogo(input){let f=input.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{logoB64=e.target.result;document.getElementById('prev-logo').src=logoB64;document.getElementById('prev-logo').style.display='block';document.getElementById('logo-config').src=logoB64;document.getElementById('logo-config').style.display='block'};r.readAsDataURL(f)}
-function salvarEmpresa(){
- let razao=document.getElementById('emp-razao')?.value||document.getElementById('c-razao')?.value;
- let fantasia=document.getElementById('emp-fantasia')?.value||document.getElementById('c-fantasia')?.value;
- let cnpj=document.getElementById('emp-cnpj')?.value||document.getElementById('c-cnpj')?.value;
- let end=document.getElementById('emp-end')?.value||document.getElementById('c-end')?.value;
- if(!razao)return alert('Razão Social obrigatória');
- emp={razao:razao,fantasia:fantasia,cnpj:cnpj,end:end,nome:razao};localStorage.setItem('dtg_emp',JSON.stringify(emp));if(logoB64)localStorage.setItem('dtg_logo',logoB64);alert('Configurações salvas!');location.reload()
-}
-function showCad(){document.getElementById('cad-empresa').style.display='block';document.getElementById('login-normal').style.display='none'}
-function entrar(){let e=document.getElementById('email').value.trim(),s=document.getElementById('senha').value.trim().toLowerCase();if(!e.includes('@')){document.getElementById('erro').textContent='Email inválido';document.getElementById('erro').style.display='block';return}if(s!=='dina2026'&&s!=='dina'&&s!=='123'){document.getElementById('erro').textContent='Senha incorreta! Use dina2026';document.getElementById('erro').style.display='block';return}localStorage.setItem('logado','sim');localStorage.setItem('email_logado',e);document.getElementById('login').style.display='none'}
-function resetar(){localStorage.removeItem('logado');location.reload()}
+function upLogo(input){let f=input.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{logoB64=e.target.result;document.getElementById('prev-logo').src=logoB64;document.getElementById('prev-logo').style.display='block';};r.readAsDataURL(f)}
+function salvarEmpresa(){let razao=document.getElementById('emp-razao').value||'DINATECH';emp={razao:razao,fantasia:document.getElementById('emp-fant').value,cnpj:document.getElementById('emp-cnpj').value,nome:razao};localStorage.setItem('dtg_emp',JSON.stringify(emp));if(logoB64)localStorage.setItem('dtg_logo',logoB64);document.getElementById('login').style.display='none';renderAll()}
+function salvarEmpresa2(){let razao=document.getElementById('c-razao').value;emp={razao:razao,fantasia:document.getElementById('c-fantasia').value,cnpj:document.getElementById('c-cnpj').value,nome:razao};localStorage.setItem('dtg_emp',JSON.stringify(emp));alert('Configurações salvas!');location.reload()}
+function entrar(){let e=document.getElementById('email').value.trim(),s=document.getElementById('senha').value.trim().toLowerCase();if(!e.includes('@')){document.getElementById('erro').textContent='Email inválido';document.getElementById('erro').style.display='block';return}if(s!==''&&s!=='dina2026'&&s!=='dina'){document.getElementById('erro').textContent='Senha: dina2026';document.getElementById('erro').style.display='block';return}localStorage.setItem('logado','sim');localStorage.setItem('email_logado',e);document.getElementById('login').style.display='none';}
 function sair(){localStorage.removeItem('logado');location.reload()}
-function save(){localStorage.setItem('dtg_cli',JSON.stringify(cli));localStorage.setItem('dtg_vei',JSON.stringify(vei));localStorage.setItem('dtg_pecas',JSON.stringify(pec));localStorage.setItem('dtg_orc',JSON.stringify(orc));localStorage.setItem('dtg_os',JSON.stringify(osl));localStorage.setItem('dtg_caixa',JSON.stringify(cx));localStorage.setItem('dtg_ab',JSON.stringify(ab));renderAll()}
-function aba(id){document.querySelectorAll('.secao').forEach(s=>s.style.display='none');let map={dash:'sec-dash',clientes:'sec-clientes',veiculos:'sec-veiculos',pecas:'sec-pecas',orc:'sec-orc',os:'sec-os',caixa:'sec-caixa',config:'sec-config',venda:'sec-caixa'};let el=document.getElementById(map[id]||'sec-'+id);if(el)el.style.display='block';document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('ativo'));let m=document.getElementById('m-'+id);if(m)m.classList.add('ativo');let titles={dash:'📊 Dashboards',clientes:'👥 Clientes',veiculos:'🚗 Veículos',pecas:'📦 Peças',orc:'📝 Orçamentos',os:'🔧 Ordem de Serviço',caixa:'💳 Caixa',config:'⚙️ Configurações'};document.getElementById('titulo-pagina').textContent=titles[id]||id}
-function toggleSub(id){let el=document.getElementById(id);el.style.display=el.style.display==='none'?'block':'none'}
-function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open')}
-function salvarCli(){let id=document.getElementById('cli-id').value,n=document.getElementById('cli-nome').value,cpf=document.getElementById('cli-cpf').value,t=document.getElementById('cli-tel').value,en=document.getElementById('cli-end').value;if(!n)return alert('Nome');let c={id:id||Date.now()+'',nome:n,cpf:cpf,tel:t,end:en};if(id){cli[cli.findIndex(x=>x.id==id)]=c}else cli.push(c);document.getElementById('cli-id').value='';document.getElementById('cli-nome').value='';save()}
-function renderCli(){document.getElementById('tab-cli').innerHTML=cli.map(c=>`<tr><td><b>${c.nome}</b></td><td>${c.tel||''}</td><td><button onclick="editCli('${c.id}')">✏️</button> <button onclick="delCli('${c.id}')">🗑️</button></td></tr>`).join('');let o=cli.map(c=>`<option value="${c.id}">${c.nome}</option>`).join('');['vei-cli','orc-cli'].forEach(id=>{let el=document.getElementById(id);if(el)el.innerHTML='<option value="">Selecione</option>'+o})}
-function editCli(id){let c=cli.find(x=>x.id==id);document.getElementById('cli-id').value=c.id;document.getElementById('cli-nome').value=c.nome;document.getElementById('cli-cpf').value=c.cpf||'';document.getElementById('cli-tel').value=c.tel||'';document.getElementById('cli-end').value=c.end||'';aba('clientes')}
-function delCli(id){if(confirm('Apagar?')){cli=cli.filter(c=>c.id!=id);save()}}
-function salvarVei(){let id=document.getElementById('vei-id').value,cid=document.getElementById('vei-cli').value,pl=document.getElementById('vei-placa').value.toUpperCase(),ma=document.getElementById('vei-marca').value,mo=document.getElementById('vei-modelo').value;if(!pl||!cid)return alert('Placa e cliente');let v={id:id||Date.now()+'',clienteId:cid,placa:pl,marca:ma,modelo:mo};if(id){vei[vei.findIndex(x=>x.id==id)]=v}else vei.push(v);document.getElementById('vei-id').value='';document.getElementById('vei-placa').value='';save()}
-function renderVei(){document.getElementById('tab-vei').innerHTML=vei.map(v=>{let cl=cli.find(c=>c.id==v.clienteId);return `<tr><td><b>${v.placa}</b> - ${v.marca} ${v.modelo}<br><small style="color:#888">${cl?cl.nome:''}</small></td><td><button onclick="editVei('${v.id}')">✏️</button> <button onclick="delVei('${v.id}')">🗑️</button></td></tr>`}).join('')}
-function editVei(id){let v=vei.find(x=>x.id==id);document.getElementById('vei-id').value=v.id;document.getElementById('vei-cli').value=v.clienteId;document.getElementById('vei-placa').value=v.placa;document.getElementById('vei-marca').value=v.marca||'';document.getElementById('vei-modelo').value=v.modelo||'';aba('veiculos')}
-function delVei(id){if(confirm('Apagar?')){vei=vei.filter(v=>v.id!=id);save()}}
-function filtraVei(tipo){let cid=document.getElementById(tipo+'-cli').value;let sel=document.getElementById(tipo+'-vei');let lista=vei.filter(v=>v.clienteId==cid);sel.innerHTML=lista.map(v=>`<option value="${v.id}">${v.placa} - ${v.modelo}</option>`).join('')||'<option>Nenhum</option>'}
-function calc(){let c=parseFloat(document.getElementById('pec-custo').value)||0,m=parseFloat(document.getElementById('pec-marg').value)||0,v=c*(1+m/100);document.getElementById('pec-venda').value=v.toFixed(2);document.getElementById('pec-lucro').textContent='R$ '+(v-c).toFixed(2)}
-function calc2(){let c=parseFloat(document.getElementById('pec-custo').value)||0,v=parseFloat(document.getElementById('pec-venda').value)||0;if(c>0)document.getElementById('pec-marg').value=(((v-c)/c)*100).toFixed(0);document.getElementById('pec-lucro').textContent='R$ '+(v-c).toFixed(2)}
-function salvarPec(){let id=document.getElementById('pec-id').value,n=document.getElementById('pec-nome').value,c=parseFloat(document.getElementById('pec-custo').value)||0,v=parseFloat(document.getElementById('pec-venda').value)||0,e=parseInt(document.getElementById('pec-est').value)||0;if(!n)return alert('Nome');let p={id:id||Date.now()+'',nome:n,custo:c,venda:v,est:e};if(id){pec[pec.findIndex(x=>x.id==id)]=p}else pec.push(p);document.getElementById('pec-id').value='';document.getElementById('pec-nome').value='';save()}
-function renderPec(){document.getElementById('tab-pec').innerHTML=pec.map(p=>`<tr><td>${p.nome}</td><td style="color:#22c55e;font-weight:bold">R$ ${(p.venda-p.custo).toFixed(2)}</td><td>${p.est}</td><td><button onclick="editPec('${p.id}')">✏️</button> <button onclick="delPec('${p.id}')">🗑️</button></td></tr>`).join('');let o=pec.map(p=>`<option value="${p.id}">${p.nome} - R$${p.venda} | Lucro R$${(p.venda-p.custo).toFixed(2)}</option>`).join('');if(document.getElementById('orc-pec'))document.getElementById('orc-pec').innerHTML=o}
-function editPec(id){let p=pec.find(x=>x.id==id);document.getElementById('pec-id').value=p.id;document.getElementById('pec-nome').value=p.nome;document.getElementById('pec-custo').value=p.custo;document.getElementById('pec-venda').value=p.venda;document.getElementById('pec-est').value=p.est;calc();aba('pecas')}
-function delPec(id){if(confirm('Apagar?')){pec=pec.filter(p=>p.id!=id);save()}}
-function addOrc(){let pid=document.getElementById('orc-pec').value,q=parseInt(document.getElementById('orc-qtd').value)||1,mo=parseFloat(document.getElementById('orc-mo').value)||0;let p=pec.find(x=>x.id==pid);if(!p)return alert('Peça');itO.push({pecaId:p.id,nome:p.nome,custo:p.custo,venda:p.venda,qtd:q,mo:mo,lucro:p.venda-p.custo});renderItO()}
-function renderItO(){let tot=0,luc=0;document.getElementById('orc-itens').innerHTML=itO.map((it,i)=>{tot+=it.venda*it.qtd+it.mo;luc+=it.lucro*it.qtd+it.mo;return `<div style="display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:8px;font-size:13px"><span>${it.nome} x${it.qtd}</span><span style="color:#22c55e">Lucro R$${(it.lucro*it.qtd+it.mo).toFixed(2)}</span><span><button onclick="itO.splice(${i},1);renderItO()">❌</button></span></div>`}).join('');document.getElementById('orc-total').innerHTML=`Total: R$ ${tot.toFixed(2)} | <span style="color:#22c55e">Lucro: R$ ${luc.toFixed(2)}</span>`}
-function salvarOrc(){let cid=document.getElementById('orc-cli').value;if(!cid||!itO.length)return alert('Cliente e peças');let tot=itO.reduce((s,it)=>s+it.venda*it.qtd+it.mo,0),cus=itO.reduce((s,it)=>s+it.custo*it.qtd,0);orc.push({id:Date.now(),clienteId:cid,veiculoId:document.getElementById('orc-vei').value,itens:[...itO],total:tot,custo:cus,lucro:tot-cus});itO=[];renderItO();save()}
-function renderOrc(){document.getElementById('lista-orc').innerHTML=orc.slice().reverse().map(o=>{let cl=cli.find(c=>c.id==o.clienteId);return `<div class="card" style="border-left:4px solid #ff7a45"><b>#${o.id}</b> - ${cl?cl.nome:''} - R$${o.total.toFixed(2)}<br><span style="color:#22c55e">Lucro R$${o.lucro.toFixed(2)}</span><br><button class="btn btn-verde" style="padding:6px 12px;font-size:12px;margin-top:8px" onclick="aprovOrc(${o.id})">Aprovar p/ OS + Caixa</button> <button onclick="delOrc(${o.id})" style="background:#ef4444;color:#fff;border:none;padding:6px 10px;border-radius:6px">Apagar</button></div>`}).join('')||'Nenhum'}
-function delOrc(id){if(confirm('Apagar?')){orc=orc.filter(o=>o.id!=id);save()}}
-function aprovOrc(id){let o=orc.find(x=>x.id==id);osl.push({id:Date.now(),clienteId:o.clienteId,veiculoId:o.veiculoId,total:o.total,custo:o.custo,lucro:o.lucro,itens:o.itens});o.itens.forEach(it=>{let p=pec.find(x=>x.id==it.pecaId);if(p)p.est-=it.qtd});cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'entrada',desc:'OS #'+id,valor:o.total,lucro:o.lucro});save();aba('os')}
-function renderOS(){document.getElementById('lista-os').innerHTML=osl.slice().reverse().map(o=>`<div class="card"><b>OS #${o.id}</b> - R$${o.total.toFixed(2)} | <span style="color:#22c55e">Lucro R$${o.lucro.toFixed(2)}</span></div>`).join('')||'Nenhuma'}
-function abrirCaixa(){let v=parseFloat(document.getElementById('caixa-ab-v').value);if(!v)return alert('Valor');ab={valor:v};cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'abertura',desc:'Abertura de Caixa',valor:v});document.getElementById('caixa-status').textContent='Aberto R$ '+v.toFixed(2);save()}
-function receberCaixa(){let d=document.getElementById('caixa-rec-d').value,v=parseFloat(document.getElementById('caixa-rec-v').value);if(!v)return alert('Valor');cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'entrada',desc:d||'Recebimento',valor:v,lucro:v});save()}
-function sangriaCaixa(){let v=parseFloat(document.getElementById('caixa-san-v').value),d=document.getElementById('caixa-san-d').value;if(!v)return alert('Valor');cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'sangria',desc:d||'Sangria',valor:v});save()}
-function suprimentoCaixa(){let v=parseFloat(document.getElementById('caixa-sup-v').value),d=document.getElementById('caixa-sup-d').value;if(!v)return alert('Valor');cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'suprimento',desc:d||'Suprimento',valor:v});save()}
-function renderCaixa(){let saldo=cx.reduce((s,c)=>{if(c.tipo==='entrada'||c.tipo==='suprimento'||c.tipo==='abertura')return s+c.valor;else return s-c.valor},0);let ent=cx.filter(c=>c.tipo==='entrada').reduce((s,c)=>s+c.valor,0);let sai=cx.filter(c=>c.tipo==='saida'||c.tipo==='sangria').reduce((s,c)=>s+c.valor,0);let luc=cx.filter(c=>c.tipo==='entrada').reduce((s,c)=>s+(c.lucro||0),0)-sai;document.getElementById('cx-saldo').textContent='R$ '+saldo.toFixed(2);document.getElementById('cx-ent').textContent='R$ '+ent.toFixed(2);document.getElementById('cx-sai').textContent='R$ '+sai.toFixed(2);document.getElementById('cx-luc').textContent='R$ '+luc.toFixed(2);document.getElementById('d-fat').textContent='R$ '+ent.toFixed(2);document.getElementById('d-lucro').textContent='R$ '+luc.toFixed(2);document.getElementById('d-caixa').textContent=ab?'Aberto R$ '+ab.valor.toFixed(2):'Fechado';document.getElementById('d-os').textContent=osl.length;document.getElementById('d-est').innerHTML=pec.filter(p=>p.est<=2).map(p=>`<div>⚠️ ${p.nome} Est:${p.est} | Lucro R$${(p.venda-p.custo).toFixed(2)}</div>`).join('')||'✅ Estoque OK';document.getElementById('tab-caixa').innerHTML=cx.slice().reverse().map(c=>`<tr><td>${new Date(c.data).toLocaleDateString()}</td><td><span class="badge" style="background:${c.tipo==='entrada'?'#dcfce7':'#fee2e2'};color:${c.tipo==='entrada'?'#166534':'#991b1b'}">${c.tipo}</span></td><td>${c.desc}</td><td>R$ ${c.valor.toFixed(2)}</td><td><button onclick="delCaixa('${c.id}')">🗑️</button></td></tr>`).join('')}
-function delCaixa(id){if(confirm('Apagar?')){cx=cx.filter(c=>c.id!=id);save()}}
-function renderAll(){renderCli();renderVei();renderPec();renderOrc();renderOS();renderCaixa()}
-init();
-</script></body></html>
+function save(){localStorage.setItem('dtg_cli',JSON.stringify(cli));localStorage.setItem('dtg_vei',JSON.stringify(vei));localStorage.setItem('dtg_pecas',JSON.stringify(pec));localStorage.setItem('dtg_orc',JSON.stringify(orc));localStorage.setItem('dtg_os',
