@@ -167,5 +167,18 @@ function renderCaixa(){
  if(abertura){document.getElementById('d-abertura').textContent='Aberto R$ '+abertura.valor.toFixed(2); document.getElementById('cx-ab-status').innerHTML=`Aberto: R$ ${abertura.valor.toFixed(2)}`;}
 
  document.getElementById('tab-caixa').innerHTML=lista.slice().reverse().map(c=>{
-   let cor=c.tipo==='entrada'?'bg-green':c.tipo==='sa
+   let cor=c.tipo==='entrada'?'bg-green':c.tipo==='saida'?'bg-red':c.tipo==='sangria'?'bg-orange':c.tipo==='suprimento'?'bg-blue':'bg-yellow';
+   return `<tr><td>${new Date(c.data).toLocaleString()}</td><td><span class="badge ${cor}">${c.tipo.toUpperCase()}</span></td><td>${c.desc}</td><td>R$ ${c.valor.toFixed(2)}</td><td style="color:green">${c.lucro?'R$ '+c.lucro.toFixed(2):'-'}</td><td><button onclick="editCaixa('${c.id}')">✏️ Editar</button> <button onclick="delCaixa('${c.id}')">🗑️ Apagar</button></td></tr>`;
+ }).join('');
+}
 
+function gerarDRE(){let mes=parseInt(document.getElementById('dre-mes').value),ano=parseInt(document.getElementById('dre-ano').value),vendasMes=caixa.filter(c=>{let d=new Date(c.data);return d.getMonth()==mes&&d.getFullYear()==ano&&(c.tipo==='entrada')}),desp=caixa.filter(c=>{let d=new Date(c.data);return d.getMonth()==mes&&d.getFullYear()==ano&&(c.tipo==='saida'||c.tipo==='sangria')}),fat=vendasMes.reduce((s,c)=>s+c.valor,0),custo=vendasMes.reduce((s,c)=>s+(c.custo||0),0),lucroB=vendasMes.reduce((s,c)=>s+(c.lucro||0),0),totalDesp=desp.reduce((s,c)=>s+c.valor,0),lucroL=lucroB-totalDesp;document.getElementById('dre-result').innerHTML=`<div class="card"><h3>DRE ${mes+1}/${ano}</h3><table><tr><td><b>(+) Faturamento Bruto (Recebimentos)</b></td><td style="text-align:right"><b>R$ ${fat.toFixed(2)}</b></td></tr><tr><td>(-) Custo Peças</td><td style="text-align:right;color:red">- R$ ${custo.toFixed(2)}</td></tr><tr style="background:#f0fdf4"><td><b>(=) Lucro Bruto</b></td><td style="text-align:right;color:green"><b>R$ ${lucroB.toFixed(2)}</b></td></tr><tr><td><b>Total Despesas + Sangrias</b></td><td style="text-align:right;color:red"><b>R$ ${totalDesp.toFixed(2)}</b></td></tr><tr style="background:#dbeafe"><td><b>(=) Lucro Líquido Final</b></td><td style="text-align:right"><b>R$ ${lucroL.toFixed(2)}</b></td></tr></table></div>`;}
+
+function renderAll(){renderCli();renderVei();renderPec();renderOrcList();renderOS();renderCaixa();}
+renderAll();
+document.getElementById('dre-mes').value=new Date().getMonth();
+document.getElementById('dre-ano').value=new Date().getFullYear();
+document.getElementById('cx-ab-data').valueAsDate=new Date();
+</script>
+</body>
+</html>
