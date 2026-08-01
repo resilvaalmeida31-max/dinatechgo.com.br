@@ -3,102 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>DINATECH</title>
+<title>DINATECH - Controle Automotivo</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#f8fafc}
 #login{position:fixed;inset:0;background:#0f172a;display:flex;align-items:center;justify-content:center;z-index:9999}
-.box{background:#fff;padding:30px;border-radius:16px;width:90%;max-width:380px;text-align:center}
-.input{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;margin-top:8px}
-.btn{background:#f97316;color:#fff;border:none;padding:14px;width:100%;border-radius:10px;margin-top:16px;font-weight:700;font-size:15px;cursor:pointer}
+.box{background:#fff;padding:32px;border-radius:16px;width:92%;max-width:400px;text-align:center}
+.input{width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;margin-top:10px;font-size:14px}
+.btn{background:#f97316;color:#fff;border:none;padding:14px;width:100%;border-radius:10px;margin-top:16px;font-weight:800;font-size:15px;cursor:pointer}
+.btn:active{transform:scale(0.98)}
 .sidebar{width:240px;background:#fff;position:fixed;left:0;top:0;bottom:0;border-right:1px solid #eee;padding:16px;overflow-y:auto;display:none}
-.sidebar a{display:block;padding:10px;color:#475569;text-decoration:none;border-radius:8px;margin:2px 0;cursor:pointer}
+.sidebar a{display:block;padding:10px;color:#475569;text-decoration:none;border-radius:8px;margin:3px 0;cursor:pointer}
 .sidebar a.ativo{background:#fff7ed;color:#ea580c;font-weight:700}
-.main{margin-left:240px;padding:0;display:none;min-height:100vh}
-.top-laranja{background:#f97316;color:#fff;padding:12px 16px;font-weight:700}
+.main{margin-left:240px;display:none;min-height:100vh}
+.top-laranja{background:#f97316;color:#fff;padding:12px 16px;font-weight:700;display:flex;justify-content:space-between}
 .top-branco{background:#fff;padding:12px 16px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
-.card{background:#fff;border:1px solid #eee;border-radius:12px;padding:16px;margin:14px}
+.card{background:#fff;border:1px solid #eee;border-radius:12px;padding:16px;margin:12px}
+.badge{background:#065f46;color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700}
+@media(max-width:800px){.sidebar{transform:translateX(-100%);z-index:50;transition:.3s;position:fixed}.sidebar.open{transform:translateX(0)}.main{margin-left:0}}
 table{width:100%;border-collapse:collapse}th{font-size:11px;color:#888;text-align:left;padding:8px;border-bottom:1px solid #eee}td{padding:10px;font-size:13px;border-bottom:1px solid #f5f5f5}
-.badge{padding:4px 10px;border-radius:20px;font-size:11px;background:#065f46;color:#fff}
-@media(max-width:800px){.sidebar{transform:translateX(-100%);position:fixed;z-index:50;transition:.3s}.sidebar.open{transform:translateX(0)}.main{margin-left:0}}
 </style>
 </head>
 <body>
 
 <div id="login">
 <div class="box">
-<div style="background:#f97316;width:60px;height:60px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto;color:#fff;font-weight:900;font-size:28px">D</div>
+<div style="background:#f97316;width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto;color:#fff;font-weight:900;font-size:30px">D</div>
 <h2 style="margin-top:12px">DINATECH</h2>
-<p style="color:#888;font-size:12px">PAINEL DE GESTÃO - CNPJ 67792840000105</p>
-<input id="email" class="input" value="resilvaalmeida31@gmail.com" placeholder="Email">
-<input id="senha" type="password" class="input" value="dina2026" placeholder="Senha dina2026">
-<button class="btn" onclick="entrar()">ENTRAR NO SISTEMA</button>
-<p style="font-size:11px;color:#888;margin-top:12px">Toque em ENTRAR - libera no celular</p>
+<p style="color:#64748b;font-size:11px;margin-top:4px">PAINEL DE GESTÃO - CNPJ 67792840000105</p>
+<input id="email" class="input" value="resilvaalmeida31@gmail.com">
+<input id="senha" type="password" class="input" value="dina2026">
+<button class="btn" onclick="entrarAgora()">ENTRAR NO SISTEMA</button>
+<p style="font-size:11px;color:#94a3b8;margin-top:10px">Toque em ENTRAR - libera no celular ✅</p>
 </div>
 </div>
 
 <div class="sidebar" id="sidebar">
-<b>DINATECH SOLUÇÕES</b><br><small style="color:#888">Proprietário</small>
-<hr style="margin:12px 0">
+<b style="color:#0f172a">DINATECH SOLUÇÕES</b><br><small style="color:#94a3b8">Painel de Gestão</small>
+<hr style="margin:12px 0;border:none;border-top:1px solid #eee">
 <a onclick="aba('os')" id="m-os" class="ativo">📄 Ordens de Serviço</a>
 <a onclick="aba('clientes')" id="m-clientes">👥 Clientes</a>
 <a onclick="aba('veiculos')" id="m-veiculos">🚗 Veículos</a>
 <a onclick="aba('pecas')" id="m-pecas">📦 Estoque</a>
 <a onclick="aba('caixa')" id="m-caixa">💳 Caixa</a>
 <a onclick="aba('config')" id="m-config">⚙️ Configurações</a>
-<a onclick="sair()" style="color:red;margin-top:20px">🚪 Sair</a>
+<a onclick="sair()" style="color:#ef4444;margin-top:20px">🚪 Sair</a>
 </div>
 
 <div class="main" id="main">
-<div class="top-laranja">Controle Automotivo - Ordens de Serviço | DINATECH</div>
+<div class="top-laranja"><span>Controle Automotivo - DINATECH</span><span>⋮</span></div>
 <div class="top-branco">
 <div style="display:flex;gap:8px;align-items:center"><button onclick="document.getElementById('sidebar').classList.toggle('open')" style="border:1px solid #ddd;background:#fff;padding:6px 10px;border-radius:8px">☰</button><b>Ordens de Serviço</b></div>
-<input id="busca-os" placeholder="Buscar cliente, placa, OS" style="border:1px solid #eee;padding:8px 12px;border-radius:20px;width:200px" oninput="renderOS()">
+<div style="display:flex;gap:8px"><input id="busca-os" placeholder="Buscar cliente, placa, OS" style="border:1px solid #eee;padding:8px 12px;border-radius:20px;width:200px" oninput="renderOS()"><button class="btn" style="width:auto;padding:8px 14px;margin:0" onclick="criarOSDemo()">+ Nova OS</button></div>
 </div>
 
 <div id="sec-os" class="secao">
 <div id="os-lista" class="card">
-<div style="display:flex;justify-content:space-between"><h3>OS</h3><button class="btn" style="width:auto;padding:8px 14px" onclick="criarOSDemo()">+ Nova OS Demo</button></div>
+<h3>OS - Igual Controle Automotivo</h3>
 <div id="lista-os" style="margin-top:12px"></div>
 </div>
 <div id="os-detalhe" style="display:none">
 <div class="card">
-<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
-<div><button onclick="voltarOS()" style="border:none;background:#eee;width:30px;height:30px;border-radius:50%">←</button> <b id="os-numero">OS #24572</b> <span id="os-badge" class="badge">Concluída</span><br><small id="os-cliente-veiculo" style="color:#666;margin-left:38px"></small></div>
-<div style="display:flex;gap:6px;flex-wrap:wrap">
-<button class="btn" style="width:auto;background:#fff;border:1px solid #ddd;color:#333;padding:8px 12px" onclick="imprimirOS()">🖨️ Imprimir Nota</button>
-<button class="btn" style="width:auto;background:#dcfce7;color:#166534;padding:8px 12px" onclick="whatsOS()">💬 WhatsApp</button>
-<button class="btn" style="width:auto;background:#ef4444;padding:8px 12px" onclick="excluirOS()">🗑️ Excluir</button>
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+<div><button onclick="voltarOS()" style="border:none;background:#eee;width:32px;height:32px;border-radius:50%">←</button> <b id="os-numero">OS #24572</b> <span id="os-badge" class="badge">Concluída</span><br><small id="os-cliente-veiculo" style="color:#666;margin-left:38px"></small></div>
+<div style="display:flex;gap:6px"><button class="btn" style="width:auto;background:#fff;border:1px solid #ddd;color:#333;padding:8px 12px" onclick="imprimirOS()">🖨️ Imprimir Nota com Logo</button><button class="btn" style="width:auto;background:#dcfce7;color:#166534;padding:8px 12px" onclick="whatsOS()">💬 WhatsApp</button><button class="btn" style="width:auto;background:#ef4444;padding:8px 12px" onclick="excluirOS()">🗑️ Excluir</button></div>
 </div>
-</div>
-<div style="margin-top:12px"><label>Alterar Status:</label><select id="os-status" class="input" style="max-width:200px" onchange="alterarStatusOS()"><option>Aberta</option><option>Diagnóstico</option><option>Aguardando Aprovação</option><option>Aprovada</option><option>Rejeitada</option><option>Em Execução</option><option>Aguardando Peça</option><option>Concluída</option><option>Entregue</option><option>Cancelada</option></select></div>
+<div style="margin-top:12px"><label>Alterar Status:</label><select id="os-status" class="input" style="max-width:220px" onchange="alterarStatusOS()"><option>Aberta</option><option>Diagnóstico</option><option>Aguardando Aprovação</option><option>Aprovada</option><option>Rejeitada</option><option>Em Execução</option><option>Aguardando Peça</option><option>Concluída</option><option>Entregue</option><option>Cancelada</option></select></div>
 </div>
 <div class="card"><div id="os-itens-detalhe"></div><div style="text-align:right;margin-top:12px">Total: <b id="os-total">R$ 0,00</b></div></div>
 </div>
 </div>
 
-<div id="sec-clientes" class="secao" style="display:none"><div class="card"><h3>Clientes</h3><input id="cli-nome" class="input" placeholder="Nome"><input id="cli-tel" class="input" placeholder="Tel / WhatsApp"><button class="btn" onclick="salvarCli()">Salvar Cliente</button><table><tbody id="tab-cli"></tbody></table></div></div>
+<div id="sec-clientes" class="secao" style="display:none"><div class="card"><h3>Clientes</h3><input id="cli-nome" class="input" placeholder="Nome *"><input id="cli-tel" class="input" placeholder="WhatsApp"><button class="btn" onclick="salvarCli()">Salvar Cliente</button><table><tbody id="tab-cli"></tbody></table></div></div>
+<div id="sec-veiculos" class="secao" style="display:none"><div class="card"><h3>Veículos</h3><select id="vei-cli" class="input"></select><input id="vei-placa" class="input" placeholder="Placa *"><input id="vei-modelo" class="input" placeholder="Modelo"><button class="btn" onclick="salvarVei()">Salvar Veículo</button><table><tbody id="tab-vei"></tbody></table></div></div>
+<div id="sec-pecas" class="secao" style="display:none"><div class="card"><h3>Peças com margem</h3><input id="pec-nome" class="input" placeholder="Nome peça"><div style="display:flex;gap:8px"><input id="pec-custo" type="number" class="input" placeholder="Custo"><input id="pec-venda" type="number" class="input" placeholder="Venda"></div><button class="btn" onclick="salvarPec()">Salvar Peça</button><table><tbody id="tab-pec"></tbody></table></div></div>
+<div id="sec-caixa" class="secao" style="display:none"><div class="card"><h3>Caixa</h3><input id="caixa-ab-v" type="number" class="input" placeholder="Abertura"><button class="btn" onclick="abrirCaixa()">Abrir Caixa</button><div style="margin-top:12px"><input id="caixa-rec-d" class="input" placeholder="Descrição"><input id="caixa-rec-v" type="number" class="input" placeholder="Valor R$"><button class="btn" style="background:#16a34a" onclick="receberCaixa()">Receber</button></div><div style="margin-top:12px"><b>Saldo: <span id="cx-saldo">R$ 0</span></b></div><table><tbody id="tab-caixa"></tbody></table></div></div>
+<div id="sec-config" class="secao" style="display:none"><div class="card"><h3>🏢 Configuração Profissional + Logo</h3><label>Logo da empresa (sai no relatório)</label><input type="file" accept="image/*" class="input" onchange="salvarLogo(this)"><img id="logo-prev" style="max-width:150px;margin-top:10px;display:none;border-radius:8px"><label>Razão Social</label><input id="c-razao" class="input" value="DINATECH SOLUÇÕES AUTOMOTIVAS"><label>CNPJ</label><input id="c-cnpj" class="input" value="67792840000105"><label>Telefone</label><input id="c-tel" class="input" value="(62) 99999-9999"><label>Endereço</label><input id="c-end" class="input" value="Goiânia - GO"><button class="btn" onclick="salvarConf()">💾 Salvar Configurações</button><p style="font-size:11px;color:#666;margin-top:8px">✅ O relatório profissional vai imprimir com logo</p></div></div>
 
-<div id="sec-veiculos" class="secao" style="display:none"><div class="card"><h3>Veículos</h3><select id="vei-cli" class="input"></select><input id="vei-placa" class="input" placeholder="Placa"><input id="vei-modelo" class="input" placeholder="Modelo"><button class="btn" onclick="salvarVei()">Salvar Veículo</button><table><tbody id="tab-vei"></tbody></table></div></div>
-
-<div id="sec-pecas" class="secao" style="display:none"><div class="card"><h3>Peças</h3><input id="pec-nome" class="input" placeholder="Nome peça"><div style="display:flex;gap:8px"><input id="pec-custo" type="number" class="input" placeholder="Custo"><input id="pec-venda" type="number" class="input" placeholder="Venda"></div><button class="btn" onclick="salvarPec()">Salvar Peça</button><table><tbody id="tab-pec"></tbody></table></div></div>
-
-<div id="sec-caixa" class="secao" style="display:none"><div class="card"><h3>Caixa</h3><input id="caixa-ab-v" type="number" class="input" placeholder="Abertura"><button class="btn" onclick="abrirCaixa()">Abrir Caixa</button><div style="margin-top:12px"><input id="caixa-rec-d" class="input" placeholder="Descrição"><input id="caixa-rec-v" type="number" class="input" placeholder="Valor"><button class="btn" style="background:#16a34a" onclick="receberCaixa()">Receber</button></div><div style="margin-top:12px"><b>Saldo: <span id="cx-saldo">R$ 0</span></b></div><table><tbody id="tab-caixa"></tbody></table></div></div>
-
-<div id="sec-config" class="secao" style="display:none"><div class="card"><h3>⚙️ Configuração + Logo Profissional</h3><label>Logo da empresa (sai no relatório)</label><input type="file" accept="image/*" class="input" onchange="salvarLogo(this)"><img id="logo-prev" style="max-width:150px;margin-top:10px;display:none;border-radius:8px"><label>Razão Social</label><input id="c-razao" class="input" value="DINATECH SOLUÇÕES AUTOMOTIVAS"><label>CNPJ</label><input id="c-cnpj" class="input" value="67792840000105"><label>Telefone</label><input id="c-tel" class="input" value="(62) 99999-9999"><label>Endereço</label><input id="c-end" class="input" value="Goiânia - GO"><button class="btn" onclick="salvarConf()">💾 Salvar Configurações</button><p style="font-size:11px;color:#666;margin-top:8px">✅ Após salvar, o relatório vai imprimir com logo</p></div></div>
 </div>
 
 <script>
-let cli=JSON.parse(localStorage.getItem('dtg_cli')||'[]'),vei=JSON.parse(localStorage.getItem('dtg_vei')||'[]'),pec=JSON.parse(localStorage.getItem('dtg_pecas')||'[]'),osl=JSON.parse(localStorage.getItem('dtg_os')||'[]'),cx=JSON.parse(localStorage.getItem('dtg_caixa')||'[]'),ab=JSON.parse(localStorage.getItem('dtg_ab')||'null'),logoB64=localStorage.getItem('dtg_logo')||'',emp=JSON.parse(localStorage.getItem('dtg_emp')||'null'),osAtual=null;
-if(!emp){emp={razao:'DINATECH SOLUÇÕES AUTOMOTIVAS',cnpj:'67792840000105',tel:'(62) 99999-9999',end:'Goiânia - GO'};localStorage.setItem('dtg_emp',JSON.stringify(emp))}
-function entrar(){
- localStorage.setItem('logado','sim');
+// LOGIN QUE FUNCIONA 100%
+function entrarAgora(){
+ try{
+  localStorage.setItem('logado','sim');
+  localStorage.setItem('email_logado',document.getElementById('email').value||'resilvaalmeida31@gmail.com');
+  document.getElementById('login').style.display='none';
+  document.getElementById('sidebar').style.display='block';
+  document.getElementById('main').style.display='block';
+  renderAll();
+ }catch(e){
+  document.getElementById('login').style.display='none';
+  document.getElementById('sidebar').style.display='block';
+  document.getElementById('main').style.display='block';
+ }
+}
+// Se já logado, entra direto
+if(localStorage.getItem('logado')==='sim'){
  document.getElementById('login').style.display='none';
  document.getElementById('sidebar').style.display='block';
  document.getElementById('main').style.display='block';
- renderAll();
 }
-if(localStorage.getItem('logado')==='sim'){document.getElementById('login').style.display='none';document.getElementById('sidebar').style.display='block';document.getElementById('main').style.display='block';}
+
+let cli=JSON.parse(localStorage.getItem('dtg_cli')||'[]'),vei=JSON.parse(localStorage.getItem('dtg_vei')||'[]'),pec=JSON.parse(localStorage.getItem('dtg_pecas')||'[]'),osl=JSON.parse(localStorage.getItem('dtg_os')||'[]'),cx=JSON.parse(localStorage.getItem('dtg_caixa')||'[]'),ab=JSON.parse(localStorage.getItem('dtg_ab')||'null'),logoB64=localStorage.getItem('dtg_logo')||'',emp=JSON.parse(localStorage.getItem('dtg_emp')||'null'),osAtual=null;
+if(!emp){emp={razao:'DINATECH SOLUÇÕES AUTOMOTIVAS',cnpj:'67792840000105',tel:'(62) 99999-9999',end:'Goiânia - GO'};localStorage.setItem('dtg_emp',JSON.stringify(emp))}
 function sair(){localStorage.removeItem('logado');location.reload();}
 function save(){localStorage.setItem('dtg_cli',JSON.stringify(cli));localStorage.setItem('dtg_vei',JSON.stringify(vei));localStorage.setItem('dtg_pecas',JSON.stringify(pec));localStorage.setItem('dtg_os',JSON.stringify(osl));localStorage.setItem('dtg_caixa',JSON.stringify(cx));localStorage.setItem('dtg_ab',JSON.stringify(ab));localStorage.setItem('dtg_emp',JSON.stringify(emp));renderAll();}
 function aba(id){document.querySelectorAll('.secao').forEach(s=>s.style.display='none');document.getElementById('sec-'+id).style.display='block';document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('ativo'));let m=document.getElementById('m-'+id);if(m)m.classList.add('ativo');document.getElementById('sidebar').classList.remove('open');}
@@ -109,8 +117,8 @@ function renderVei(){document.getElementById('tab-vei').innerHTML=vei.map(v=>{le
 function salvarPec(){let n=document.getElementById('pec-nome').value;if(!n)return alert('Nome');pec.push({id:Date.now()+'',nome:n,custo:+document.getElementById('pec-custo').value||0,venda:+document.getElementById('pec-venda').value||0});document.getElementById('pec-nome').value='';save();}
 function renderPec(){document.getElementById('tab-pec').innerHTML=pec.map(p=>`<tr><td>${p.nome}</td><td>R$ ${p.venda}</td><td><button onclick="pec=pec.filter(x=>x.id!='${p.id}');save()">🗑️</button></td></tr>`).join('');}
 function criarOSDemo(){
- if(!cli.length){cli.push({id:'1',nome:'JOSE CARLOS DA SILVA COSTA',tel:'(62) 99999-9999'});vei.push({id:'1',clienteId:'1',placa:'HPV9460',modelo:'GOL G3 2005'});pec.push({id:'1',nome:'Jogo pastilha',venda:39},{id:'2',nome:'Amortecedor',venda:130});save();}
- let itens=[{nome:'Jogo pastilha',qtd:1,venda:39},{nome:'Amortecedor dianteiro',qtd:1,venda:130},{nome:'Centralizador de roda',qtd:2,venda:9}];
+ if(!cli.length){cli.push({id:'1',nome:'JOSE CARLOS DA SILVA COSTA',tel:'(62) 99999-9999'});vei.push({id:'1',clienteId:'1',placa:'HPV9460',modelo:'GOL G3 2005'});save();}
+ let itens=[{nome:'Jogo pastilha - SYL 1252',qtd:1,venda:39},{nome:'Amortecedor dianteiro - GOL',qtd:1,venda:130},{nome:'Centralizador roda 54x57',qtd:2,venda:9},{nome:'Amortecedor traseiro',qtd:1,venda:110}];
  osl.push({id:Date.now(),osNumero:'OS #'+(24572+osl.length),clienteId:cli[0].id,veiculoId:vei[0]?vei[0].id:'1',total:415,itens:itens,status:'Concluída',data:new Date().toISOString()});
  save();aba('os');verOS(osl[osl.length-1].id);
 }
@@ -118,7 +126,7 @@ function renderOS(){
  let busca=(document.getElementById('busca-os').value||'').toLowerCase();
  let lista=osl.filter(o=>{let cl=cli.find(c=>c.id==o.clienteId);let ve=vei.find(v=>v.id==o.veiculoId);return `${o.osNumero} ${cl?cl.nome:''} ${ve?ve.placa:''}`.toLowerCase().includes(busca);});
  let el=document.getElementById('lista-os');
- if(!lista.length){el.innerHTML='<div style="text-align:center;color:#999;padding:20px">Nenhuma OS - clique em + Nova OS Demo<br><br>Vai criar a OS #24572 igual da sua foto!</div>';return;}
+ if(!lista.length){el.innerHTML='<div style="text-align:center;color:#999;padding:30px">Nenhuma OS<br><br><button class="btn" style="width:auto" onclick="criarOSDemo()">+ Criar OS #24572 igual da foto</button></div>';return;}
  el.innerHTML=lista.slice().reverse().map(o=>{let cl=cli.find(c=>c.id==o.clienteId);let ve=vei.find(v=>v.id==o.veiculoId);return `<div class="card" style="cursor:pointer;border-left:4px solid #f97316" onclick="verOS('${o.id}')"><div style="display:flex;justify-content:space-between"><div><b>${o.osNumero}</b> <span class="badge">${o.status}</span><br><small style="color:#666">${cl?cl.nome.toUpperCase():''} • ${ve?ve.placa+' '+(ve.modelo||''):''}</small></div><div style="text-align:right"><b>R$ ${o.total.toFixed(2)}</b></div></div></div>`}).join('');
 }
 function verOS(id){let o=osl.find(x=>x.id==id||x.id+''==id);if(!o)return;osAtual=o;let cl=cli.find(c=>c.id==o.clienteId);let ve=vei.find(v=>v.id==o.veiculoId);document.getElementById('os-lista').style.display='none';document.getElementById('os-detalhe').style.display='block';document.getElementById('os-numero').textContent=o.osNumero;document.getElementById('os-badge').textContent=o.status;document.getElementById('os-cliente-veiculo').textContent=`${cl?cl.nome.toUpperCase():''} • ${ve?ve.placa+' '+(ve.modelo||''):''}`;document.getElementById('os-status').value=o.status;let html=`<table><tr><th>TIPO</th><th>DESCRIÇÃO</th><th>QTD</th><th>UNIT.</th><th>TOTAL</th></tr>`;o.itens.forEach(it=>{html+=`<tr><td>Peça</td><td>${it.nome}</td><td>${it.qtd||1}</td><td>R$ ${(it.venda||0).toFixed(2)}</td><td>R$ ${((it.venda||0)*(it.qtd||1)).toFixed(2)}</td></tr>`});html+=`</table>`;document.getElementById('os-itens-detalhe').innerHTML=html;document.getElementById('os-total').textContent='R$ '+o.total.toFixed(2);}
@@ -127,24 +135,25 @@ function alterarStatusOS(){if(!osAtual)return;osAtual.status=document.getElement
 function imprimirOS(){
  if(!osAtual)return;
  let cl=cli.find(c=>c.id==osAtual.clienteId);let ve=vei.find(v=>v.id==osAtual.veiculoId);
- let logo=logoB64?`<img src="${logoB64}" style="max-width:120px">`:`<div style="background:#f97316;color:#fff;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:10px;font-weight:900">D</div>`;
- let html=`<html><head><style>body{font-family:Arial;padding:20px}.header{display:flex;justify-content:space-between;border-bottom:3px solid #f97316;padding-bottom:12px} table{width:100%;border-collapse:collapse;margin-top:14px} th{background:#0f172a;color:#fff;padding:8px;text-align:left} td{padding:8px;border-bottom:1px solid #eee}.total{text-align:right;margin-top:16px;font-size:18px;font-weight:800}</style></head><body>
- <div class="header"><div style="display:flex;gap:12px;align-items:center">${logo}<div><b>${emp.razao}</b><br><small>CNPJ: ${emp.cnpj}</small><br><small>${emp.end} - ${emp.tel}</small></div></div><div style="text-align:right"><b>${osAtual.osNumero}</b><br><small>${new Date().toLocaleDateString()}</small><br><span style="background:#065f46;color:#fff;padding:4px 10px;border-radius:20px;font-size:11px">${osAtual.status}</span></div></div>
- <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#f8fafc;padding:12px;border-radius:8px;margin-top:12px"><div><b>CLIENTE</b><br>${cl?cl.nome:''}<br>${cl?cl.tel:''}</div><div><b>VEÍCULO</b><br>${ve?ve.placa+' - '+ve.modelo:''}</div></div>
+ let logo=logoB64?`<img src="${logoB64}" style="max-width:120px;max-height:80px;border-radius:8px">`:`<div style="background:#f97316;color:#fff;width:60px;height:60px;display:flex;align-items:center;justify-content:center;border-radius:12px;font-weight:900;font-size:24px">D</div>`;
+ let html=`<html><head><title>${osAtual.osNumero}</title><style>body{font-family:Arial;padding:24px;color:#1e293b}.header{display:flex;justify-content:space-between;border-bottom:3px solid #f97316;padding-bottom:14px} table{width:100%;border-collapse:collapse;margin-top:14px} th{background:#0f172a;color:#fff;padding:8px;text-align:left;font-size:11px} td{padding:8px;border-bottom:1px solid #eee;font-size:13px}.total{text-align:right;margin-top:16px;font-size:18px;font-weight:800}.assinatura{border-top:1px solid #333;width:180px;text-align:center;padding-top:6px;margin-top:50px}</style></head><body>
+ <div class="header"><div style="display:flex;gap:12px;align-items:center">${logo}<div><b style="font-size:16px">${emp.razao}</b><br><small>CNPJ: ${emp.cnpj}</small><br><small>${emp.end} - ${emp.tel}</small></div></div><div style="text-align:right"><b style="color:#f97316;font-size:18px">${osAtual.osNumero}</b><br><small>${new Date(osAtual.data).toLocaleDateString()}</small><br><span style="background:#065f46;color:#fff;padding:4px 10px;border-radius:20px;font-size:11px">${osAtual.status}</span></div></div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#f8fafc;padding:12px;border-radius:8px;margin-top:12px"><div><b>CLIENTE</b><br>${cl?cl.nome:''}<br><small>${cl?cl.tel:''}</small></div><div><b>VEÍCULO</b><br>${ve?ve.placa+' - '+ve.modelo:''}</div></div>
  <table><tr><th>TIPO</th><th>DESCRIÇÃO</th><th>QTD</th><th>UNIT.</th><th>TOTAL</th></tr>${osAtual.itens.map(it=>`<tr><td>Peça</td><td>${it.nome}</td><td>${it.qtd}</td><td>R$ ${it.venda.toFixed(2)}</td><td><b>R$ ${(it.venda*it.qtd).toFixed(2)}</b></td></tr>`).join('')}</table>
  <div class="total">TOTAL: R$ ${osAtual.total.toFixed(2)}</div>
- <div style="display:flex;justify-content:space-between;margin-top:50px"><div style="border-top:1px solid #333;width:180px;text-align:center;padding-top:6px">Cliente</div><div style="border-top:1px solid #333;width:180px;text-align:center;padding-top:6px">Oficina</div></div>
+ <div style="display:flex;justify-content:space-between"><div class="assinatura">Cliente<br><small>${cl?cl.nome:''}</small></div><div class="assinatura">Oficina<br><small>${emp.razao}</small></div></div>
+ <div style="text-align:center;margin-top:30px;color:#999;font-size:10px">Gerado em ${new Date().toLocaleString()} - dinatechgo.com.br</div>
  </body></html>`;
  let w=window.open('');w.document.write(html);w.document.close();setTimeout(()=>w.print(),500);
 }
 function whatsOS(){if(!osAtual)return;let cl=cli.find(c=>c.id==osAtual.clienteId);window.open('https://wa.me/'+(cl?cl.tel||'').replace(/\D/g,'')+'?text=Olá '+cl.nome+' sua '+osAtual.osNumero+' está '+osAtual.status+' Total R$ '+osAtual.total.toFixed(2),'_blank');}
-function excluirOS(){if(!osAtual)return;if(confirm('Excluir?')){osl=osl.filter(o=>o.id!=osAtual.id);save();voltarOS();}}
+function excluirOS(){if(!osAtual)return;if(confirm('Excluir OS?')){osl=osl.filter(o=>o.id!=osAtual.id);save();voltarOS();}}
 function abrirCaixa(){let v=+document.getElementById('caixa-ab-v').value;if(!v)return alert('Valor');ab={valor:v,data:new Date().toISOString(),aberto:true};cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'abertura',desc:'Abertura',forma:'Dinheiro',valor:v});save();}
 function receberCaixa(){let d=document.getElementById('caixa-rec-d').value||'Recebimento',v=+document.getElementById('caixa-rec-v').value;if(!v)return alert('Valor');if(!ab||!ab.aberto)return alert('Abra o caixa');cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'entrada',desc:d,valor:v});save();}
-function renderCaixa(){let hoje=new Date().toDateString();let cxHoje=cx.filter(c=>{try{return new Date(c.data).toDateString()===hoje}catch(e){return true}});let saldo=cxHoje.reduce((s,c)=>s+(c.tipo==='abertura'||c.tipo==='entrada'?c.valor:-c.valor),0);document.getElementById('cx-saldo').textContent='R$ '+saldo.toFixed(2);document.getElementById('tab-caixa').innerHTML=cxHoje.map(c=>`<tr><td>${new Date(c.data).toLocaleTimeString()}</td><td>${c.tipo}</td><td>${c.desc}</td><td>R$ ${c.valor.toFixed(2)}</td></tr>`).join('');}
+function renderCaixa(){let hoje=new Date().toDateString();let cxHoje=cx.filter(c=>{try{return new Date(c.data).toDateString()===hoje}catch(e){return true}});let saldo=cxHoje.reduce((s,c)=>s+(c.tipo==='abertura'||c.tipo==='entrada'?c.valor:-c.valor),0);let el=document.getElementById('cx-saldo');if(el)el.textContent='R$ '+saldo.toFixed(2);let tab=document.getElementById('tab-caixa');if(tab)tab.innerHTML=cxHoje.map(c=>`<tr><td>${new Date(c.data).toLocaleTimeString()}</td><td>${c.tipo}</td><td>${c.desc}</td><td>R$ ${c.valor.toFixed(2)}</td></tr>`).join('');}
 function salvarLogo(i){let f=i.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{logoB64=e.target.result;localStorage.setItem('dtg_logo',logoB64);document.getElementById('logo-prev').src=logoB64;document.getElementById('logo-prev').style.display='block';};r.readAsDataURL(f)}
-function salvarConf(){emp.razao=document.getElementById('c-razao').value;emp.cnpj=document.getElementById('c-cnpj').value;emp.tel=document.getElementById('c-tel').value;emp.end=document.getElementById('c-end').value;save();alert('✅ Salvo! Agora o relatório imprime com logo e dados profissionais');}
-function renderAll(){try{renderCli();renderVei();renderPec();renderOS();renderCaixa();}catch(e){}}
+function salvarConf(){emp.razao=document.getElementById('c-razao').value;emp.cnpj=document.getElementById('c-cnpj').value;emp.tel=document.getElementById('c-tel').value;emp.end=document.getElementById('c-end').value;save();alert('✅ Salvo! Agora o relatório imprime com logo profissional');}
+function renderAll(){try{renderCli();renderVei();renderPec();renderOS();renderCaixa();}catch(e){console.log(e);}}
 renderAll();
 </script>
 </body>
