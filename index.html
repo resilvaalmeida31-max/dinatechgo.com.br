@@ -1,11 +1,105 @@
 <!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>DINATECH</title></head>
-<body style="margin:0;background:#0f172a;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:Arial">
-<div style="background:#fff;padding:30px;border-radius:16px;text-align:center;width:90%;max-width:380px">
-<h2>DINATECH</h2><p style="color:green">✅ SITE NO AR!</p>
-<p>CNPJ 67792840000105</p>
-<button onclick="alert('Entrou!')" style="background:#f97316;color:#fff;border:none;padding:14px;width:100%;border-radius:10px;font-weight:800">ENTRAR NO SISTEMA</button>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DINATECH - Sistema</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f1f5f9}
+#login{position:fixed;inset:0;background:#0f172a;display:flex;align-items:center;justify-content:center;z-index:999}
+.box-login{background:#fff;padding:28px;border-radius:16px;width:92%;max-width:380px;text-align:center}
+.input{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;margin-top:8px}
+.btn{background:#f97316;color:#fff;border:none;padding:12px;width:100%;border-radius:8px;margin-top:10px;font-weight:800;cursor:pointer}
+.sidebar{width:220px;background:#fff;position:fixed;left:0;top:0;bottom:0;border-right:1px solid #eee;padding:14px;display:none;overflow:auto}
+.sidebar a{display:block;padding:9px;border-radius:6px;color:#475569;text-decoration:none;margin:2px 0;cursor:pointer;font-size:13px}
+.sidebar a.ativo{background:#fff7ed;color:#ea580c;font-weight:700}
+.main{margin-left:220px;display:none}
+.topo-laranja{background:#f97316;color:#fff;padding:10px 16px;font-weight:700;display:flex;justify-content:space-between}
+.card{background:#fff;border:1px solid #eee;border-radius:10px;padding:14px;margin:10px}
+.badge{background:#065f46;color:#fff;padding:3px 10px;border-radius:20px;font-size:10px}
+@media(max-width:700px){.sidebar{transform:translateX(-100%);z-index:50;position:fixed;transition:.3s}.sidebar.open{transform:translateX(0)}.main{margin-left:0}}
+</style>
+</head>
+<body>
+<div id="login">
+<div class="box-login">
+<div style="background:#f97316;width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto;color:#fff;font-weight:900;font-size:26px">D</div>
+<h2 style="margin-top:8px">DINATECH</h2>
+<p style="color:#888;font-size:10px">CNPJ 67792840000105</p>
+<input id="email" class="input" value="resilvaalmeida31@gmail.com">
+<input id="senha" type="password" class="input" value="dina2026">
+<button class="btn" onclick="entrar()">ENTRAR NO SISTEMA</button>
 </div>
+</div>
+
+<div class="sidebar" id="sidebar">
+<b>DINATECH</b><br><small style="color:#999">Painel de Gestão</small><hr style="margin:10px 0">
+<a onclick="aba('os')" id="m-os" class="ativo">📄 Ordens de Serviço</a>
+<a onclick="aba('clientes')" id="m-clientes">👥 Clientes</a>
+<a onclick="aba('veiculos')" id="m-veiculos">🚗 Veículos</a>
+<a onclick="aba('pecas')" id="m-pecas">📦 Peças</a>
+<a onclick="aba('caixa')" id="m-caixa">💳 Caixa</a>
+<a onclick="aba('config')" id="m-config">⚙️ Config</a>
+<a onclick="localStorage.clear();location.reload()" style="color:#ef4444;margin-top:20px">🚪 Sair</a>
+</div>
+
+<div class="main" id="main">
+<div class="topo-laranja"><span>Controle Automotivo - DINATECH</span><span onclick="document.getElementById('sidebar').classList.toggle('open')" style="cursor:pointer">☰</span></div>
+
+<div id="sec-os">
+<div class="card" id="lista-os-card">
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+<b>Ordens de Serviço</b>
+<div><input id="busca" placeholder="Buscar" style="border:1px solid #ddd;padding:6px 10px;border-radius:20px" oninput="renderOS()"><button class="btn" style="width:auto;padding:6px 12px;margin:0 0 0 6px" onclick="criarOS()">+ Nova OS</button></div>
+</div>
+<div id="lista-os" style="margin-top:10px"></div>
+</div>
+<div class="card" id="det-os" style="display:none">
+<button onclick="voltarOS()" style="border:none;background:#eee;width:30px;height:30px;border-radius:50%">←</button> <b id="os-num"></b> <span id="os-badge" class="badge"></span>
+<div id="os-cliente" style="color:#666;font-size:12px;margin:6px 0 0 34px"></div>
+<div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+<button class="btn" style="width:auto;background:#fff;color:#333;border:1px solid #ddd" onclick="imprimir()">🖨️ Imprimir Nota com Logo</button>
+<button class="btn" style="width:auto;background:#16a34a" onclick="whats()">💬 Whats</button>
+<button class="btn" style="width:auto;background:#ef4444" onclick="excluirOS()">🗑️ Excluir</button>
+</div>
+<div style="margin-top:10px"><select id="os-status" class="input" style="max-width:200px" onchange="mudaStatus()"><option>Aberta</option><option>Diagnóstico</option><option>Aguardando Aprovação</option><option>Aprovada</option><option>Em Execução</option><option>Concluída</option><option>Entregue</option></select></div>
+<div id="os-itens" style="margin-top:10px"></div>
+<div style="text-align:right;margin-top:10px;font-weight:800" id="os-total"></div>
+</div>
+</div>
+
+<div id="sec-clientes" style="display:none"><div class="card"><h3>Clientes</h3><input id="c-nome" class="input" placeholder="Nome *"><input id="c-tel" class="input" placeholder="WhatsApp"><button class="btn" onclick="salvarCli()">Salvar</button><div id="tab-cli" style="margin-top:10px"></div></div></div>
+<div id="sec-veiculos" style="display:none"><div class="card"><h3>Veículos</h3><select id="v-cli" class="input"></select><input id="v-placa" class="input" placeholder="Placa *"><input id="v-mod" class="input" placeholder="Modelo"><button class="btn" onclick="salvarVei()">Salvar</button><div id="tab-vei" style="margin-top:10px"></div></div></div>
+<div id="sec-pecas" style="display:none"><div class="card"><h3>Peças</h3><input id="p-nome" class="input" placeholder="Nome"><div style="display:flex;gap:6px"><input id="p-custo" type="number" class="input" placeholder="Custo"><input id="p-venda" type="number" class="input" placeholder="Venda"></div><button class="btn" onclick="salvarPec()">Salvar</button><div id="tab-pec" style="margin-top:10px"></div></div></div>
+<div id="sec-caixa" style="display:none"><div class="card"><h3>Caixa</h3><input id="cx-v" type="number" class="input" placeholder="Valor abertura"><button class="btn" onclick="abrirCaixa()">Abrir Caixa</button><div style="margin-top:10px"><input id="cx-d" class="input" placeholder="Descrição"><input id="cx-vr" type="number" class="input" placeholder="Valor"><button class="btn" style="background:#16a34a" onclick="receber()">Receber</button></div><div style="margin-top:10px;font-weight:700">Saldo: <span id="cx-saldo">R$ 0</span></div><div id="tab-cx"></div></div></div>
+<div id="sec-config" style="display:none"><div class="card"><h3>Config + Logo</h3><input type="file" accept="image/*" class="input" onchange="logo(this)"><img id="logo-prev" style="max-width:120px;display:none;margin-top:8px;border-radius:8px"><input id="cfg-razao" class="input" value="DINATECH SOLUÇÕES"><input id="cfg-cnpj" class="input" value="67792840000105"><input id="cfg-tel" class="input" value="(62) 99999-9999"><button class="btn" onclick="salvarCfg()">Salvar</button></div></div>
+</div>
+
+<script>
+let cli=JSON.parse(localStorage.getItem('cli')||'[]'),vei=JSON.parse(localStorage.getItem('vei')||'[]'),pec=JSON.parse(localStorage.getItem('pec')||'[]'),osl=JSON.parse(localStorage.getItem('osl')||'[]'),cx=JSON.parse(localStorage.getItem('cx')||'[]'),logoB64=localStorage.getItem('logo')||'',emp=JSON.parse(localStorage.getItem('emp')||'{"razao":"DINATECH SOLUÇÕES","cnpj":"67792840000105","tel":"(62) 99999-9999"}'),osAtual=null;
+function entrar(){document.getElementById('login').style.display='none';document.getElementById('sidebar').style.display='block';document.getElementById('main').style.display='block';render();}
+if(localStorage.getItem('logado')){entrar()}
+function saveAll(){localStorage.setItem('cli',JSON.stringify(cli));localStorage.setItem('vei',JSON.stringify(vei));localStorage.setItem('pec',JSON.stringify(pec));localStorage.setItem('osl',JSON.stringify(osl));localStorage.setItem('cx',JSON.stringify(cx));localStorage.setItem('emp',JSON.stringify(emp));localStorage.setItem('logado','sim');render();}
+function aba(id){document.querySelectorAll('[id^="sec-"]').forEach(s=>s.style.display='none');document.getElementById('sec-'+id).style.display='block';document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('ativo'));let m=document.getElementById('m-'+id);if(m)m.classList.add('ativo');document.getElementById('sidebar').classList.remove('open');}
+function salvarCli(){let n=document.getElementById('c-nome').value;if(!n)return alert('Nome');cli.push({id:Date.now()+'',nome:n,tel:document.getElementById('c-tel').value});document.getElementById('c-nome').value='';saveAll();}
+function salvarVei(){let pl=document.getElementById('v-placa').value.toUpperCase(),cid=document.getElementById('v-cli').value;if(!pl||!cid)return alert('Placa e cliente');vei.push({id:Date.now()+'',clienteId:cid,placa:pl,modelo:document.getElementById('v-mod').value});saveAll();}
+function salvarPec(){let n=document.getElementById('p-nome').value;if(!n)return;pec.push({id:Date.now()+'',nome:n,custo:+document.getElementById('p-custo').value||0,venda:+document.getElementById('p-venda').value||0});saveAll();}
+function criarOS(){if(!cli.length){cli.push({id:'1',nome:'JOSE CARLOS DA SILVA COSTA',tel:'62999999999'});vei.push({id:'1',clienteId:'1',placa:'HPV9460',modelo:'GOL G3 2005'});}let itens=[{nome:'Jogo pastilha - SYL 1252',qtd:1,venda:39},{nome:'Amortecedor dianteiro GOL',qtd:1,venda:130},{nome:'Centralizador roda',qtd:2,venda:9},{nome:'Amortecedor traseiro',qtd:1,venda:110}];osl.push({id:Date.now(),numero:'OS #'+(24572+osl.length),clienteId:cli[0].id,veiculoId:vei[0].id,total:415,itens:itens,status:'Concluída',data:new Date().toISOString()});saveAll();verOS(osl[osl.length-1].id);}
+function render(){let sel=cli.map(c=>`<option value="${c.id}">${c.nome}</option>`).join('');document.getElementById('v-cli').innerHTML='<option value="">Cliente</option>'+sel;document.getElementById('tab-cli').innerHTML=cli.map(c=>`<div style="padding:6px;border-bottom:1px solid #eee;display:flex;justify-content:space-between"><span>${c.nome} - ${c.tel||''}</span><span onclick="cli=cli.filter(x=>x.id!='${c.id}');saveAll()" style="color:red;cursor:pointer">🗑️</span></div>`).join('');document.getElementById('tab-vei').innerHTML=vei.map(v=>{let cl=cli.find(c=>c.id==v.clienteId);return `<div style="padding:6px;border-bottom:1px solid #eee;display:flex;justify-content:space-between"><span><b>${v.placa}</b> ${v.modelo} - ${cl?cl.nome:''}</span><span onclick="vei=vei.filter(x=>x.id!='${v.id}');saveAll()" style="color:red">🗑️</span></div>`}).join('');document.getElementById('tab-pec').innerHTML=pec.map(p=>`<div style="padding:6px;border-bottom:1px solid #eee">${p.nome} - R$ ${p.venda}</div>`).join('');renderOS();renderCx();}
+function renderOS(){let b=(document.getElementById('busca').value||'').toLowerCase();let lista=osl.filter(o=>{let cl=cli.find(c=>c.id==o.clienteId);let ve=vei.find(v=>v.id==o.veiculoId);return `${o.numero} ${cl?cl.nome:''} ${ve?ve.placa:''}`.toLowerCase().includes(b);});let el=document.getElementById('lista-os');if(!lista.length){el.innerHTML='<div style="text-align:center;padding:20px;color:#999">Nenhuma OS<br><br><button class="btn" style="width:auto" onclick="criarOS()">+ Criar OS #24572 da foto</button></div>';return;}el.innerHTML=lista.slice().reverse().map(o=>{let cl=cli.find(c=>c.id==o.clienteId);let ve=vei.find(v=>v.id==o.veiculoId);return `<div class="card" style="cursor:pointer;border-left:4px solid #f97316" onclick="verOS('${o.id}')"><div style="display:flex;justify-content:space-between"><div><b>${o.numero}</b> <span class="badge">${o.status}</span><br><small style="color:#666">${cl?cl.nome:''} • ${ve?ve.placa:''}</small></div><b>R$ ${o.total.toFixed(2)}</b></div></div>`}).join('');}
+function verOS(id){let o=osl.find(x=>x.id==id||x.id+''==id);if(!o)return;osAtual=o;let cl=cli.find(c=>c.id==o.clienteId);let ve=vei.find(v=>v.id==o.veiculoId);document.getElementById('lista-os-card').style.display='none';document.getElementById('det-os').style.display='block';document.getElementById('os-num').textContent=o.numero;document.getElementById('os-badge').textContent=o.status;document.getElementById('os-cliente').textContent=`${cl?cl.nome:''} • ${ve?ve.placa+' '+(ve.modelo||''):''}`;document.getElementById('os-status').value=o.status;let h='<table style="width:100%;border-collapse:collapse"><tr style="font-size:11px;color:#888"><th align="left">Descrição</th><th>Qtd</th><th>Total</th></tr>';o.itens.forEach(i=>{h+=`<tr style="border-bottom:1px solid #eee;font-size:13px"><td style="padding:6px">${i.nome}</td><td align="center">${i.qtd}</td><td align="right">R$ ${(i.venda*i.qtd).toFixed(2)}</td></tr>`});h+='</table>';document.getElementById('os-itens').innerHTML=h;document.getElementById('os-total').textContent='TOTAL: R$ '+o.total.toFixed(2);}
+function voltarOS(){document.getElementById('lista-os-card').style.display='block';document.getElementById('det-os').style.display='none';}
+function mudaStatus(){if(!osAtual)return;osAtual.status=document.getElementById('os-status').value;document.getElementById('os-badge').textContent=osAtual.status;saveAll();}
+function imprimir(){if(!osAtual)return;let cl=cli.find(c=>c.id==osAtual.clienteId);let ve=vei.find(v=>v.id==osAtual.veiculoId);let logo=logoB64?`<img src="${logoB64}" style="max-width:100px">`:`<div style="background:#f97316;color:#fff;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-weight:900">D</div>`;let html=`<html><head><style>body{font-family:Arial;padding:20px}.top{display:flex;justify-content:space-between;border-bottom:3px solid #f97316;padding-bottom:10px} table{width:100%;border-collapse:collapse;margin-top:10px} th{background:#0f172a;color:#fff;padding:6px;text-align:left;font-size:11px} td{padding:6px;border-bottom:1px solid #eee;font-size:12px}</style></head><body><div class="top"><div style="display:flex;gap:10px">${logo}<div><b>${emp.razao}</b><br><small>CNPJ ${emp.cnpj} - ${emp.tel}</small></div></div><div style="text-align:right"><b style="color:#f97316">${osAtual.numero}</b><br><small>${new Date(osAtual.data).toLocaleDateString()}</small><br><span style="background:#065f46;color:#fff;padding:2px 8px;border-radius:10px;font-size:10px">${osAtual.status}</span></div></div><div style="background:#f8fafc;padding:10px;border-radius:6px;margin-top:10px"><b>Cliente:</b> ${cl?cl.nome:''} | <b>Veículo:</b> ${ve?ve.placa+' '+ve.modelo:''}</div><table><tr><th>Descrição</th><th>Qtd</th><th>Unit</th><th>Total</th></tr>${osAtual.itens.map(i=>`<tr><td>${i.nome}</td><td>${i.qtd}</td><td>R$ ${i.venda.toFixed(2)}</td><td>R$ ${(i.venda*i.qtd).toFixed(2)}</td></tr>`).join('')}</table><div style="text-align:right;margin-top:10px;font-weight:800;font-size:16px">TOTAL: R$ ${osAtual.total.toFixed(2)}</div><div style="display:flex;justify-content:space-between;margin-top:40px"><div style="border-top:1px solid #000;width:150px;text-align:center;padding-top:4px">Cliente</div><div style="border-top:1px solid #000;width:150px;text-align:center;padding-top:4px">Oficina</div></div></body></html>`;let w=window.open('');w.document.write(html);w.document.close();setTimeout(()=>w.print(),400);}
+function whats(){if(!osAtual)return;let cl=cli.find(c=>c.id==osAtual.clienteId);window.open('https://wa.me/'+(cl?cl.tel||'').replace(/\D/g,'')+'?text=Ola '+cl.nome+' sua '+osAtual.numero+' esta '+osAtual.status+' Total R$ '+osAtual.total,'_blank');}
+function excluirOS(){if(!osAtual)return;if(confirm('Excluir?')){osl=osl.filter(o=>o.id!=osAtual.id);voltarOS();saveAll();}}
+function abrirCaixa(){let v=+document.getElementById('cx-v').value;if(!v)return;cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'abertura',desc:'Abertura',valor:v});saveAll();}
+function receber(){let d=document.getElementById('cx-d').value||'Recebimento',v=+document.getElementById('cx-vr').value;if(!v)return;cx.push({id:Date.now()+'',data:new Date().toISOString(),tipo:'entrada',desc:d,valor:v});saveAll();}
+function renderCx(){let s=cx.reduce((a,c)=>a+(c.tipo=='abertura'||c.tipo=='entrada'?c.valor:-c.valor),0);document.getElementById('cx-saldo').textContent='R$ '+s.toFixed(2);document.getElementById('tab-cx').innerHTML=cx.slice().reverse().map(c=>`<div style="padding:6px;border-bottom:1px solid #eee;font-size:12px;display:flex;justify-content:space-between"><span>${new Date(c.data).toLocaleTimeString()} - ${c.desc}</span><span>R$ ${c.valor.toFixed(2)}</span></div>`).join('');}
+function logo(i){let f=i.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{logoB64=e.target.result;localStorage.setItem('logo',logoB64);document.getElementById('logo-prev').src=logoB64;document.getElementById('logo-prev').style.display='block';};r.readAsDataURL(f);}
+function salvarCfg(){emp.razao=document.getElementById('cfg-razao').value;emp.cnpj=document.getElementById('cfg-cnpj').value;emp.tel=document.getElementById('cfg-tel').value;localStorage.setItem('emp',JSON.stringify(emp));alert('Salvo!');}
+render();
+</script>
 </body>
 </html>
